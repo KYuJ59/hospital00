@@ -264,7 +264,7 @@ function subject(){
 
     init()
     function init(){
-        axios.get('../data/subject_idCenter.html').then((res)=>{
+        axios.get('/data/subject_idCenter.html').then((res)=>{
             panel.innerHTML=res.data;
         })
     }
