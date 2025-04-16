@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.4/axios.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.css.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css'/>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/animation.css">
+    <title>hospital00</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <ul class="skipmenu">
+        <li><a title="본문내용 바로가기" href="#" class="hidden">본문내용 바로가기</a></li>
+    </ul>
+    <div id="headerWrap">
+        <header>
+            <h1 id="logo"><a title="휴먼영상의학센터" href="https://humic.co.kr/main/main.html">휴먼영상의학센터</a></h1>
+            <div id="navBg"></div>
+            <nav id="mainMenu">
+                <h2 class="hidden">메인메뉴</h2>
+                <ul id="mainMenu_list">
+                    <li><a title="병원소개" href="#">병원소개</a>
+                        <ul class="subMenu_list">
+                            <li><a title="병원소개" href="#">병원소개</a></li>
+                            <li><a title="의료진 소개" href="#">의료진 소개</a></li>
+                            <li><a title="장비소개" href="#">장비소개</a></li>
+                            <li><a title="찾아오시는 길" href="#">찾아오시는 길</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="휴먼영상의학센터" href="#">휴먼영상의학센터</a>
+                        <ul class="subMenu_list">
+                            <li><a title="영상진단 클리닉" href="#">영상진단 클리닉</a></li>
+                            <li><a title="건강검진" href="#">건강검진</a></li>
+                            <li><a title="유방 클리닉" href="#">유방 클리닉</a></li>
+                            <li><a title="갑상선 클리닉" href="#">갑상선 클리닉</a></li>
+                            <li><a title="소아 초음파·영상 클리닉" href="#">소아 초음파·영상 클리닉</a></li>
+                        </ul>                    
+                    </li>
+                    <li><a title="휴먼영상시술센터" href="#">휴먼영상시술센터</a>
+                        <ul class="subMenu_list">
+                            <li><a title="통증 클리닉" href="#">통증 클리닉</a></li>
+                            <li><a title="전립선비대증 클리닉" href="#">전립선비대증 클리닉</a></li>
+                            <li><a title="자궁근종 클리닉" href="#">자궁근종 클리닉</a></li>
+                            <li><a title="하지정맥 클리닉" href="#">하지정맥 클리닉</a></li>
+                            <li><a title="투석혈관 클리닉" href="#">투석혈관 클리닉</a></li>
+                            <li><a title="인터벤션" href="#">인터벤션</a></li>
+                            <li><a title="EECP 클리닉" href="#">EECP 클리닉</a></li>
+                            <li><a title="중심정맥관 클리닉" href="#">중심정맥관 클리닉</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="커뮤니티" href="#">커뮤니티</a>
+                        <ul class="subMenu_list">
+                            <li><a title="병원소식" href="#">병원소식</a></li>
+                            <li><a title="휴먼YOUTUBE" href="#">휴먼YOUTUBE</a></li>
+                            <li><a title="의료지식" href="#">의료지식</a></li>
+                            <li><a title="진단사례 및 치료후기" href="#">진단사례 및 치료후기</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="비급여항목" href="#">비급여항목</a>
+                        <ul class="subMenu_list">
+                            <li><a title="비급여항목" href="#">비급여항목</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="예약 및 상담" href="#">예약 및 상담</a>
+                        <ul class="subMenu_list">
+                            <li><a title="전문의 상담" href="#">전문의 상담</a></li>
+                            <li><a title="진료예약 상담" href="#">진료예약 상담</a></li>
+                            <li><a title="자주 묻는 질문" href="#">자주 묻는 질문</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <button id="login" class="activate">
+                <i class="fa-regular fa-circle-user"></i>
+                <span>로그인</span>
+            </button>
+            <button id="mobMenuBtn">
+                <i class="fa-solid fa-align-right"></i>
+            </button>
+            <div id="mobMenuWrap">
+                <nav id="mobMenu_box">
+                    <h2 class="hidden">모바일 메뉴</h2>
+                    <div id="mobMenu_logo"></div>
+                    <ul id="mobMenu_list">
+                        <li><a href="#">병원소개</a>
+                            <ul class="mobSubMenu_list">
+                                <li class="activate"><a title="병원소개" href="#">병원소개</a></li>
+                                <li><a title="의료진 소개" href="#">의료진 소개</a></li>
+                                <li><a title="장비소개" href="#">장비소개</a></li>
+                                <li><a title="찾아오시는 길" href="#">찾아오시는 길</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">휴먼영상의학센터</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="영상진단 클리닉" href="#">영상진단 클리닉</a></li>
+                                <li><a title="건강검진" href="#">건강검진</a></li>
+                                <li><a title="유방 클리닉" href="#">유방 클리닉</a></li>
+                                <li><a title="갑상선 클리닉" href="#">갑상선 클리닉</a></li>
+                                <li><a title="소아 초음파·영상 클리닉" href="#">소아 초음파·영상 클리닉</a></li>
+                            </ul>                    
+                        </li>
+                        <li><a href="#">휴먼영상시술센터</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="통증 클리닉" href="#">통증 클리닉</a></li>
+                                <li><a title="전립선비대증 클리닉" href="#">전립선비대증 클리닉</a></li>
+                                <li><a title="자궁근종 클리닉" href="#">자궁근종 클리닉</a></li>
+                                <li><a title="하지정맥 클리닉" href="#">하지정맥 클리닉</a></li>
+                                <li><a title="투석혈관 클리닉" href="#">투석혈관 클리닉</a></li>
+                                <li><a title="인터벤션" href="#">인터벤션</a></li>
+                                <li><a title="EECP 클리닉" href="#">EECP 클리닉</a></li>
+                                <li><a title="중심정맥관 클리닉" href="#">중심정맥관 클리닉</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">커뮤니티</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="병원소식" href="#">병원소식</a></li>
+                                <li><a title="휴먼YOUTUBE" href="#">휴먼YOUTUBE</a></li>
+                                <li><a title="의료지식" href="#">의료지식</a></li>
+                                <li><a title="진단사례 및 치료후기" href="#">진단사례 및 치료후기</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">비급여항목</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="비급여항목" href="#">비급여항목</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">예약 및 상담</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="전문의 상담" href="#">전문의 상담</a></li>
+                                <li><a title="진료예약 상담" href="#">진료예약 상담</a></li>
+                                <li><a title="자주 묻는 질문" href="#">자주 묻는 질문</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <button id="moMenu_closeBtn">×</button>
+            </div>
+        </header>
+    </div>
+    <div id="mainVisWrap">
+        <section id="mainVis_cardBox">
+            <h2 class="hidden">Human Medical Imaging & intervention Center</h2>
+            <ul id="mainVis_cardList">
+                <li id="mainVis_card00">
+                    <div class="mainVis_card_textBox">
+                        <p class="mainVis_card_text">Human Medical Imaging & intervention Center</p>
+                        <p class="mainVis_card_title">영상의학으로 생명을 구하는<br>휴먼영상의학센터입니다.</p>
+                    </div>
+                </li>
+                <li id="mainVis_card01">
+                    <div class="mainVis_card_textBox">
+                        <p class="mainVis_card_text">Human Medical Imaging & intervention Center</p>
+                        <p class="mainVis_card_title">각 분야별 세부전공<br>영상의학과 전문의 150여명 근무</p>
+                    </div>
+                </li>
+                <li id="mainVis_card02">
+                    <div class="mainVis_card_textBox">
+                        <p class="mainVis_card_text">Human Medical Imaging & intervention Center</p>
+                        <p class="mainVis_card_title">보존치료를 지향하는<br>인터벤션 치료</p>
+                    </div>
+                </li>
+            </ul>
+            <div id="mainVis_btnBox">
+                <button id="mainVis_prevBtn"><i class="fa-solid fa-angle-left"></i></button>
+                <div id="mainVis_dotBox">
+                        <button>
+                            <svg class="mainVis_dots act" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="mainVis_dotsCircle"/>
+                            </svg>
+                        </button>
+                        <button>
+                            <svg class="mainVis_dots" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="mainVis_dotsCircle"/>
+                            </svg>
+                        </button>
+                        <button>
+                            <svg class="mainVis_dots" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="mainVis_dotsCircle" />
+                            </svg>
+                        </button>
+                </div>
+                <button id="mainVis_nextBtn"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+        </section>
+        <section id="inquiryBox">
+            <h2 class="hidden">상담 문의</h2>
+            <article id="inquiry_counseling" class="inquiry">
+                <h3 class="inquiry_title">진료 상담</h3>
+                <div class="inquiry_linkBox">
+                    <a title="전화걸기" href="#" class="inquiry_link">
+                        <img src="./images/icon-call.png" alt="전화걸기">
+                        <p class="inquiry_subTitle">전화걸기</p>
+                    </a>
+                    <a title="전문의 상담" href="#" class="inquiry_link">
+                        <img src="./images/icon-consult.png" alt="전문의 상담">
+                        <p class="inquiry_subTitle">전문의 상담</p>
+                    </a>
+                </div>
+                <div class="inquiry_textBox">
+                    <p class="inquiry_text">분야별 최고 수준의 전문의와<br>상담을 통해 고민을 해결해보세요.</p>
+                </div>
+            </article>
+            <article id="inquiry_reservation" class="inquiry">
+                <h3 class="inquiry_title">진료 예약</h3>
+                <div class="inquiry_linkBox">
+                    <a title="진료예약" href="#" class="inquiry_link">
+                        <img src="./images/icon-call.png" alt="진료예약">
+                        <p class="inquiry_subTitle">전화걸기</p>
+                    </a>
+                    <a title="오시는길" href="#" class="inquiry_link">
+                        <img src="./images/icon-map.png" alt="오시는길">
+                        <p class="inquiry_subTitle">오시는길</p>
+                    </a>
+                </div>
+                <div class="inquiry_textBox">
+                    <p class="inquiry_text">
+                        · 평일
+                        <span class="inquiry_time">09:00 ~ 18:00</span>
+                    </p>
+                    <p class="inquiry_text">
+                        · 토요일
+                        <span class="inquiry_time">09:00 ~ 13:00</span>
+                    </p>
+                    <p class="inquiry_text">· 공휴일/일요일 휴진</p>
+                </div>
+            </article>
+        </section>
+    </div>
+    <div id="contentWrap">
+        <!--의료진 소개-->
+        <div class="contentBox" id="staffIntro_box">
+            <section id="staffIntro">
+                <div id="staffIntro_textBox">
+                    <h2 class="contentTitle titleUnder">모든것은 <span class="titleEmph">생명</span> 으로부터</h2>
+                    <p>휴먼영상의학센터는<br>
+                        <br>
+                    <span class="textEmph_size textEmph_weight">한 생명의 절실함이 온전히<br class="wi768br">우리에게 온다는 책임감으로</span><br><br class="wi768br">
+                    <span class="textEmph_weight">생명</span>을 살리는 <span class="textEmph_weight">영상의학 검사와 첨단 영상시술을 영상의학과 전문의 150여명과 함께</span>하고 있습니다.
+                    </p>
+                    <br>
+                    <a title="의료진 소개 바로가기" href="#">의료진 소개 바로가기 <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div id="staffIntro_staffBox">
+                    <ul id="staffIntro_staffList">
+                        <li>
+                            <img title="김김김 대표원장" src="./images/dr1.jpg" alt="김김김 대표원장">
+                            <div class="staffIntro_info">
+                                <p>영상의학과 전문의, 의학박사</p>
+                                <p>김김김 대표원장</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img title="김김김 대표원장" src="./images/dr2.jpg" alt="김김김 대표원장">
+                            <div class="staffIntro_info">
+                                <p>영상의학과 전문의, 의학박사</p>
+                                <p>김김김 대표원장</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img title="김김김 대표원장" src="./images/dr3.jpg" alt="김김김 대표원장">
+                            <div class="staffIntro_info">
+                                <p>영상의학과 전문의, 의학박사</p>
+                                <p>김김김 대표원장</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img title="김김김 대표원장" src="./images/dr4.jpg" alt="김김김 대표원장">
+                            <div class="staffIntro_info">
+                                <p>영상의학과 전문의, 의학박사</p>
+                                <p>김김김 대표원장</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img title="김김김 대표원장" src="./images/dr5.jpg" alt="김김김 대표원장">
+                            <div class="staffIntro_info">
+                                <p>영상의학과 전문의, 의학박사</p>
+                                <p>김김김 대표원장</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img title="김김김 대표원장" src="./images/dr6.jpg" alt="김김김 대표원장">
+                            <div class="staffIntro_info">
+                                <p>영상의학과 전문의, 의학박사</p>
+                                <p>김김김 대표원장</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="staffIntro_btnBox">
+                        <button id="si_prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button id="si_nextBtn" class="activate"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!--의료진소개 끝-->
+        <!--여기서부터 we are human-->
+        <div id="wewe">
+            <p>WE ARE HUMAN WE ARE HUMAN</p>&nbsp;
+        </div>
+        <!--여기까지 human we are-->
+        <!--진료과목-->
+        <div class="contentBox" id="subject_box">
+            <section id="subject">
+                <div id="subject_textBox">
+                    <h2 class="contentTitle">휴먼 <span class="titleEmph">진료과목</span></h2>
+                    <p class="subment">
+                        휴먼영상의학센터는 고품질의 영상의학검사와<br>
+                        비수술적 안전한치료를 지향합니다.
+                    </p>
+                </div>
+                <div id="subject_centerBox">
+                    <div id="subject_tabBtnBox">
+                        <button id="idCenter_tabBtn">영상진단센터</button>
+                        <button class="subjectTab_deAct" id="imgCenter_tabBtn">영상시술센터</button>
+                    </div>
+                    <div id="subject_tabBox"></div>
+                </div>
+            </section>
+        </div>
+        <!--진료과목끝-->
+    </div>
+    <script src="./script/common.js"></script>
+    <script src="./script/main.js"></script>
+</body>
+</html>

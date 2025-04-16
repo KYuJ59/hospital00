@@ -1,0 +1,26 @@
+@keyframes aBtnHover {
+    from{
+        background:#ffffff;
+        color:var(--main);
+    }
+    to{
+        background:var(--main);
+        border-color:var(--main);
+    }
+}
+@keyframes wewe {
+    from{
+        transform:translateX(0%);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+@keyframes opacity0t1 {
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}

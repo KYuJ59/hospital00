@@ -1,0 +1,900 @@
+/*여기서부터 메인비주얼*/
+#mainVisWrap{
+    width:100%;
+    height:100%;
+    position:relative;
+    left:0;
+    top:0;
+}
+#mainVis_cardBox{
+    width:100%;
+    height:100%;
+    position:relative;
+    left:0;
+    top:0;
+}
+#mainVis_cardList{
+    width:100%;
+    height:100%;
+    position:relative;
+    left:0;
+    top:0;
+}
+#mainVis_cardList li{
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    opacity:0;
+}
+#mainVis_cardList li:nth-child(1){
+    opacity:1;
+}
+#mainVis_cardList li::before{
+    display:block;
+    content:"";
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.3);
+    position:absolute;
+    left:0;
+    top:0;
+}
+    /*삽입될 이미지*/
+    #mainVis_cardList li:nth-child(1){
+        background:url('../images/usman-yousaf-SakqLf78KVo-unsplash.jpg')no-repeat 50%;
+        background-size:cover;
+    }
+    #mainVis_cardList li:nth-child(2){
+        background:url('../images/acton-crawford-8PB_TFEy2XQ-unsplash.jpg')no-repeat 50%;
+        background-size:cover;
+    }
+    #mainVis_cardList li:nth-child(3){
+        background:url('../images/piron-guillaume-U4FyCp3-KzY-unsplash.jpg')no-repeat 50%;
+        background-size:cover;
+    }
+        /*삽입될 이미지 끝*/
+.mainVis_card_textBox{
+    position:absolute;
+    left:20px;
+    top:50%;
+    transform:translateY(-50%);
+}
+.mainVis_card_text{
+    font:500 20px 'pretendard';
+    line-height:1.5;
+    text-indent:5px;
+    color:#ffffff;
+    opacity:0.6;
+}
+.mainVis_card_title{
+    font:normal 64px 'pretnedard';
+    line-height:1.5;
+    letter-spacing:-3px;
+    color:#ffffff;
+}
+#mainVis_btnBox{
+    width:145px;
+    height:24px;
+    position:absolute;
+    left:20px;
+    top:65%;
+    display:flex;
+    justify-content:space-between;
+}
+#mainVis_btnBox button{
+    border:none;
+    background:transparent;
+    color:#ffffff;
+}
+#mainVis_dotBox{
+    width:102px;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+}
+.mainVis_dots{
+    width:24px;
+    height:24px;
+    transform:rotate(-90deg);
+}
+.mainVis_dots circle{
+    cx:12px;
+    cy:12px;
+    r:2px;
+    stroke:#ffffff;
+    stroke-width:1px;
+    fill:#ffffff;
+}
+#inquiryBox{
+    width:660px;
+    height:400px;
+    box-sizing:border-box;
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+}
+.inquiry{
+    height:330px;
+    box-sizing:border-box;
+    padding:32px 0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-weight:600;
+    color:#ffffff;
+    font-family:'pretnedard';
+    text-align:center;
+}
+.inquiry>div{
+    width:80%;
+}
+#inquiry_counseling{
+    border-radius:20px 0 0 20px;
+    background:var(--main);
+}
+#inquiry_reservation{
+    border-radius:0 20px 20px 0;
+    background:#1950ad;
+    margin-top:70px;
+}
+.inquiry_title{
+    font-size:28px;
+    margin-bottom:25px;
+}
+.inquiry_linkBox{
+    width:100%;
+    height:110px;
+    position:relative;
+    left:0;
+    top:0;
+    display:flex;
+    justify-content:space-between;
+}
+.inquiry_linkBox::before{
+    display:flex;
+    content:"";
+    width:1px;
+    height:50%;
+    background:rgba(255,255,255,0.5);
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+.inquiry_link{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    color:#ffffff;
+}
+.inquiry_subTitle{
+    font-size:20px;
+}
+.inquiry_textBox{
+    width:100%;
+    height:auto;
+    padding-top:8px;
+    border-top:solid 2px rgba(255,255,255,0.5);
+    margin-top:22px;
+    font-size:17px;
+    font-weight:500;
+    line-height:1.5;
+    text-align:start;
+    letter-spacing:-1px;
+}
+.inquiry_text{
+    display:flex;
+    justify-content:space-between;
+}
+.inquiry_time{
+    font-size:18px;
+    font-weight:600;
+}
+/*여기까지 메인비주얼끝*/
+
+/*여기서부터 컨텐츠 공용설정*/
+#contentWrap{
+    width:100%;
+    min-height:500px;
+    box-sizing:border-box;
+    padding-top:160px;
+    background:coral;
+}
+.contentBox{
+    width:100%;
+    box-sizing:border-box;
+    padding:0 20px;
+}
+.contentTitle{
+    margin-bottom:30px;
+    position:relative;
+    left:0;
+    top:0;
+    font:600 68px 'pretendard';
+    text-align:center;
+}
+.titleUnder::before{
+    display:block;
+    content:"";
+    width:1px;
+    height:60px;
+    background:#999999;
+    position:absolute;
+    left:50%;
+    bottom:-70px;
+    transform:translateX(-50%);
+}
+.titleEmph{
+    position:relative;
+    left:0;
+    top:0;
+    color:var(--main);
+}
+.titleEmph::before{
+    display:'block';
+    content:"+";
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:var(--main);
+    position:absolute;
+    right:-20px;
+    top:0;
+    font-size:10px;
+    line-height:12px;
+    text-align:center;
+    color:#ffffff;
+}
+.titleEmph::after{
+    display:'block';
+    content:"";
+    width:0;
+    height:0;
+    border-top:solid 2px transparent;
+    border-right:solid 4px transparent;
+    border-bottom:solid 6px var(--main);
+    border-left:solid 4px var(--main);
+    position:absolute;
+    right:-15px;
+    top:6px;
+}
+.subment{
+    font:normal 20px 'pretendard';
+    line-height:1.5;
+    color:var(--subment);
+}
+/*여기까지 컨텐츠 공용설정끝*/
+/*여기서부터 의료진소개*/
+#staffIntro_box{
+    min-height:800px;
+    overflow:hidden;
+    background:#ffffff;
+}
+#staffIntro{
+    max-width:1600px;
+    margin:0 auto;
+}
+#staffIntro_textBox{
+    height:420px;
+    font:normal 20px 'pretendard';
+    line-height:1.5;
+    text-align:center;
+}
+#staffIntro_textBox h2{
+    margin-bottom:80px;
+}
+.wi768br{
+    display:none;
+}
+.textEmph_size{
+    font-size:30px;
+}
+.textEmph_weight{
+    font-weight:bold;
+}
+#staffIntro_textBox a{
+    padding:14px 20px;
+    border:solid 1px var(--main);
+    border-radius:40px;
+    background:#ffffff;
+    font-size:18px;
+    font-weight:600;
+    color:var(--main);
+}
+#staffIntro_textBox a:hover{
+    color:#ffffff;
+    animation:aBtnHover 0.2s forwards linear;
+}
+#staffIntro_staffBox{
+    width:100%;
+    height:auto;
+    position:relative;
+    left:0;
+    top:0;
+}
+#staffIntro_staffList{
+    display:inline-block;
+    width:auto;
+    white-space:nowrap;
+    position:relative;
+    left:0;
+    top:0;
+    transform:translateX(-30px);
+}
+#staffIntro_staffList li{
+    display:inline-block;
+    width:26vw;
+    aspect-ratio:1/1.44;
+    border-radius:20px;
+    margin-left:30px;
+    position:relative;
+    left:0;
+    top:0;
+    overflow:hidden;
+}
+#staffIntro_staffList li img{
+    width:100%;
+    object-fit:cover;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    transition:1s;
+    user-select:none;
+}
+#staffIntro_staffList li:hover img{
+    transform:translate(-50%,-50%) scale(1.1);
+}
+#staffIntro_staffList li:hover .staffIntro_info{
+    display:flex;
+}
+.staffIntro_info{
+    width:100%;
+    height:100%;
+    box-sizing:border-box;
+    background:linear-gradient(to top, rgba(90, 169, 51,1)0%,rgba(255,255,255,0)40%);
+    padding:40px;
+    position:absolute;
+    left:0;
+    bottom:0;
+    display:none;
+    flex-direction:column;
+    justify-content:end;
+    line-height:1.5;
+    color:#ffffff;
+}
+.staffIntro_info p:nth-child(1){
+    font:600 18px 'pretendard';
+}
+.staffIntro_info p:nth-child(2){
+    font:600 22px 'pretendard';
+    margin-top:10px;
+}
+#staffIntro_btnBox{
+    width:100%;
+    height:0;
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+}
+#staffIntro_btnBox button{
+    width:100px;
+    height:100px;
+    border:none;
+    border-radius:50%;
+    position:absolute;
+    top:-50px;
+    color:#ffffff;
+}
+#si_prevBtn{
+    left:-30px;
+    background:rgba(0,0,0,0.2);
+}
+#si_nextBtn{
+    right:-30px;
+    background:var(--main);
+}
+/*여기까지 의료진소개끝*/
+/*여기서부터 we are human*/
+#wewe{
+    width:100%;
+    padding:0;
+    background:#ffffff;
+    font:600 270px 'pretendard';
+    white-space:nowrap;
+    color:rgba(0,0,0,0.02);
+    overflow:hidden;
+}
+#wewe p{
+    display:inline-block;
+    animation:wewe 16s linear infinite;
+}
+/*여기까지 we are human끝*/
+/*여기서부터 진료과목소개*/
+#subject_box{
+    min-height:500px;
+    box-sizing:border-box;
+    padding-top:100px;
+    background:plum;
+}
+#subject{
+    max-width:1600px;
+    margin:0 auto;
+}
+#subject_textBox{
+    width:100%;
+    margin-bottom:50px;
+    text-align:center;
+}
+#subject_tabBtnBox{
+    width:420px;
+    height:48px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+}
+#subject_tabBtnBox button{
+    width:200px;
+    height:100%;
+    background:var(--main);
+    border:solid 1px var(--main);
+    border-radius:40px;
+    font-size:18px;
+    font-weight:600;
+    color:#ffffff;
+}
+#subject_tabBtnBox button.subjectTab_deAct{
+    border:solid 1px #dddddd;
+    background:#ffffff;
+    color:var(--subment);
+}
+#subject_tabBtnBox button.subjectTab_deAct:hover{
+    color:#ffffff;
+    animation:aBtnHover 0.2s forwards linear;
+}
+#subject_tabBox{
+    width:100%;
+    margin-top:80px;
+}
+.subject_cardBox{
+    background-size:auto 110%;
+    background-repeat:no-repeat;
+    background-position:center;
+    transition:1s;
+    position:relative;
+    left:0;
+    top:0;
+}
+.subject_cardBox:hover{
+    background-size:auto 115%;
+}
+.subject_cardBox a{
+    display:block;
+    width:100%;
+    height:100%;
+    box-sizing:border-box;
+    padding:45px 35px;
+    position:relative;
+    left:0;
+    top:0;
+}
+.subject_cardBox a::before{
+    display:block;
+    opacity:0;
+    content:"바로가기 \f061";
+    font-weight:900;
+    width:100px;
+    height:20px;
+    position:absolute;
+    left:35px;
+    bottom:45px;
+    font-family:"Font Awesome 6 Free";
+    font-size:18px;
+    color:rgba(255,255,255,0.7);
+}
+.subject_cardBox a::after{
+    display:block;
+    opacity:0;
+    content:"\2b";
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:#ffffff;
+    position:absolute;
+    right:35px;
+    bottom:45px;
+    font-size:30px;
+    line-height:52px;
+    text-align:center;
+    color:#888888;
+}
+.subject_cardBox a:hover::before{
+    animation:opacity0t1 1s forwards;
+}
+.subject_cardBox a:hover::after{
+    animation:opacity0t1 1s forwards;
+}
+.subject_inTitle{
+    font:600 30px 'pretendard';
+    word-break:keep-all;
+    color:#ffffff;
+}
+.subjects{
+    width:100%;
+    border-radius:20px;
+    display:grid;
+    overflow:hidden;
+    background:green;
+}
+    /*진료과목소개 삽입이미지-영상진단센터*/
+    #subject_idCenter{
+        height:700px;
+        grid-template-columns:repeat(4,1fr);
+        grid-template-rows:repeat(2,1fr);
+    }
+    #idC_card00{
+        background-image:url(../images/subject-1.jpg);
+        grid-column:1/3;
+    }
+    #idC_card01{
+        background-image:url(../images/subject-2.jpg);
+    }
+    #idC_card02{
+        background-image:url(../images/subject-3.jpg);
+    }
+    #idC_card03{
+        background-image:url(../images/subject-4.jpg);
+    }
+    #idC_card04{
+        background-image:url(../images/subject-5.jpg);
+        grid-column:3/5;
+    }
+    #idC_gBox{
+        background:var(--main);
+    }
+    /*진료과목소개 삽입이미지-영상진단센터끝*/
+    /*진료과목소개 삽입이미지-영상시술센터*/
+    #subject_imgCenter{
+        height:1050px;
+        grid-template-columns:repeat(12,1fr);
+        grid-template-rows:repeat(3,1fr);
+    }
+    #imgC_card00{
+        background-image:url(../images/subject-6.jpg);
+        grid-column:1/5;
+        grid-row:1;
+    }
+    #imgC_card01{
+        background-image:url(../images/subject-7.jpg);
+        grid-column:5/9;
+        grid-row:1;
+    }
+    #imgC_card02{
+        background-image:url(../images/subject-8.jpg);
+        grid-column:9/13;
+        grid-row:1;
+    }
+    #imgC_card03{
+        background-image:url(../images/subject-9.jpg);
+        grid-column:1/7;
+        grid-row:2;
+    }
+    #imgC_card04{
+        background-image:url(../images/subject-10.jpg);
+        grid-column:7/13;
+        grid-row:2;
+    }
+    #imgC_card05{
+        background-image:url(../images/subject-11.jpg);
+        grid-column:1/7;
+        grid-row:3;
+    }
+    #imgC_card06{
+        background-image:url(../images/subject-12.jpg);
+        grid-column:7/10;
+        grid-row:3;
+    }
+    #imgC_card07{
+        background:var(--main);
+        grid-column:10/13;
+        grid-row:3;
+    }
+    /*진료과목소개 삽입이미지-영상시술센터끝*/
+
+/*여기서까지 진료과목소개끝*/
+
+
+
+@media screen and (min-width:1924px){
+    /*여기서부터 의료진소개*/
+    #staffIntro_staffList li{
+        width:420px;
+        margin-left:20px;
+    }
+    /*여기까지 의료진소개끝*/
+}
+@media screen and (max-width:1400px){
+    /*여기서부터 메인비주얼*/
+    #inquiryBox{
+        width:100%;
+        height:250px;
+        position:position;
+        left:0;
+        top:unset;
+        bottom:-250px;
+        transform:translateY(0);
+    }
+    .inquiry{
+        height:100%;
+        padding:0;
+    }
+    .inquiry>div{
+        width:70%;
+    }
+    #inquiry_counseling{
+        border-radius:0;
+    }
+    #inquiry_reservation{
+        border-radius:0;
+        margin-top:0;
+    }
+    .inquiry_textBox{
+        display:none;
+    }
+    /*여기까지 메인비주얼끝*/
+    /*여기서부터 의료진소개*/
+    #staffIntro_box{
+        margin-top:250px;
+    }
+    /*여기까지 의료진소개끝*/
+}
+@media screen and (max-width:1200px){
+    /*여기서부터 메인비주얼*/
+    #mainVisWrap{
+        height:66vw;
+    }
+    .mainVis_card_text{
+        font-size:1.6vw;
+    }
+    .mainVis_card_title{
+        font-size:4.5vw;
+    }
+    #mainVis_btnBox{
+        top:65%;
+    }
+    /*여기서까지 메인비주얼끝*/
+}
+@media screen and (max-width:1024px){
+    #contentWrap{
+        padding-top:100px;
+    }
+    /*여기서부터 메인비주얼*/
+    #inquiryBox{
+        height:245px;
+        bottom:-245px;
+    }
+    /*여기까지 메인비주얼끝*/
+    /*여기서부터 컨텐츠 공용설정*/
+    #staffIntro_textBox{
+        font-size:18px;
+    }
+    .contentTitle{
+        font-size:45px;
+    }
+    .textEmph_size{
+        font-size:28px;
+    }
+    /*여기까지 컨텐츠 공용설정끝*/
+    /*여기서부터 의료진소개*/
+    #staffIntro_box{
+        margin-top:245px;
+    }
+    #staffIntro_staffList{
+        transform:translateX(-15px);
+    }
+    #staffIntro_staffList li{
+        width:44vw;
+        margin-left:15px;
+    }
+    /*여기까지 의료진소개끝*/
+    /*여기서부터 we are human*/
+    #wewe{
+        font-size:240px;
+    }
+    /*여기까지 we are human끝*/
+    /*여기서부터 진료과목소개*/
+    .subject_inTitle{
+        font-size:28px;
+    }
+    .subject_cardBox a::before{
+        font-size:16px;
+    }
+    #subject_idCenter{
+        grid-template-columns:repeat(7,2fr);
+    }
+    #idC_card00{
+        grid-column:1/4;
+    }
+    #idC_card01{
+        grid-column:4/6;
+    }
+    #idC_card02{
+        grid-column:6/8;
+    }
+    #idC_card03{
+        grid-column:3/5;
+    }
+    #idC_card04{
+        grid-column:5/8;
+    }
+    #idC_gBox{
+        grid-column:1/3;
+    }
+    /*여기까지 진료과목소개끝*/
+}
+@media screen and (max-width:768px){
+    /*여기서부터 컨텐츠 공용설정*/
+
+    /*여기까지 컨텐츠 공용설정끝*/
+    /*여기서부터 메인비주얼*/
+    .mainVis_card_textBox{
+        top:65%;
+    }
+    .mainVis_card_text{
+        font-size:15px;
+    }
+    .mainVis_card_title{
+        font-size:24px;
+    }
+    #mainVisWrap{
+        height:100%;
+    }
+    .mainVis_card_imgBox img{
+        width:300%;
+    }
+    #mainVis_btnBox{
+        top:75%;
+    }
+    #inquiryBox{
+        height:148px;
+        bottom:-148px;
+    }
+    .inquiry>div{
+        width:60%;
+    }
+    .inquiry_title{
+        font-size:16px;
+        margin-bottom:10px;
+    }
+    .inquiry_linkBox{
+        height:60px;
+    }
+    .inquiry_linkBox img{
+        width:44px;
+    }
+    .inquiry_subTitle{
+        font-size:12px;
+    }
+    /*여기까지 메인비주얼끝*/
+    /*여기서부터 의료진소개*/
+    #staffIntro_textBox{
+        width:340px;
+        margin:0 auto;
+        font-size:14px;
+        word-break:keep-all;
+    }
+    .wi768br{
+        display:block;
+    }
+    .contentTitle{
+        font-size:32px;
+    }
+    .textEmph_size{
+        font-size:20px;
+    }
+    #staffIntro_box{
+        margin-top:148px;
+    }
+    #staffIntro_staffList{
+        transform:translateX(-10px);
+    }
+    #staffIntro_staffList li{
+        width:85vw;
+        margin-left:10px;
+    }
+    #staffIntro_staffList li:hover .staffIntro_info{
+        display:none;
+    }
+    #staffIntro_staffList li.activ .staffIntro_info{
+        display:flex !important;
+    }
+    #staffIntro_btnBox{
+        display:none;
+    }
+    /*여기까지 의료진소개끝*/
+        /*여기서부터 we are human*/
+        #wewe{
+            font-size:140px;
+        }
+        /*여기까지 we are human끝*/
+    /*여기서부터 진료과목소개*/
+    #subject_tabBtnBox{
+        width:100%;
+        height:36px;
+    }
+    #subject_tabBtnBox button{
+        width:48%;
+        font-size:16px;
+        font-weight:500;
+    }
+    .subject_inTitle{
+        font-size:14px;
+    }
+    .subject_cardBox{
+        background-size:170% auto;
+    }
+    .subject_cardBox:hover{
+        background-size:180% auto;
+    }
+    .subject_cardBox a{
+        padding:15px 10px;
+    }
+    .subject_cardBox a::before{
+        left:10px;
+        bottom:15px;
+        font-size:10px;
+    }
+    .subject_cardBox a::after{
+        width:30px;
+        height:30px;
+        right:10px;
+        bottom:15px;
+        line-height:30px;
+        font-size:10px;
+    }
+    .subjects{
+        border-radius:10px;
+    }
+    #subject_idCenter{
+        height:560px;
+        grid-template-columns:repeat(2,1fr);
+        grid-template-rows:repeat(4,1fr);
+    }
+    #idC_card00{
+        grid-column:1/3;
+    }
+    #idC_card01{
+        grid-column:unset;
+    }
+    #idC_card02{
+        grid-column:unset;
+    }
+    #idC_card03{
+        grid-column:unset;
+    }
+    #idC_card04{
+        grid-column:1/3;
+        grid-row:3;
+    }
+    #idC_gBox{
+        grid-column:unset;
+    }
+    #subject_imgCenter{
+        height:560px;
+        grid-template-columns:repeat(2,1fr);
+        grid-template-rows:repeat(4,1fr);
+    }
+    #subject_imgCenter>div{
+        grid-column:unset;
+        grid-row:unset;
+    }
+    /*여기까지 진료과목소개끝*/
+}
