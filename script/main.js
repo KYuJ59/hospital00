@@ -262,12 +262,19 @@ function subject(){
     const idC_btn=document.querySelector('#idCenter_tabBtn');
     const imgC_btn=document.querySelector('#imgCenter_tabBtn');
 
+    
+    const tapInner=(subject)=>{
+        axios.get(`https://kyuj59.github.io/hospital00/data/${subject}.html`).then((res)=>{
+            panel.innerHTML=res.data;
+        })
+    }
+
+    let inners=null;
+
     init()
     initEvent()
     function init(){
-        axios.get('https://kyuj59.github.io/hospital00/data/subject_idCenter.html').then((res)=>{
-            panel.innerHTML=res.data;
-        })
+        inners=tapInner('subject_idCenter')
     };
     function initEvent(){
         idC_btn.addEventListener('click',changeTIdC);
@@ -275,19 +282,19 @@ function subject(){
     };
 
     function changeTIdC(){
-        idC_btn.classList.remove('subjectTab_deAct')
-        imgC_btn.classList.add('subjectTab_deAct')
-        axios.get('https://kyuj59.github.io/hospital00/data/subject_idCenter.html').then((res)=>{
-            panel.innerHTML=res.data;
-        });
+        if(idC_btn.classList.contains('subjectTab_deAct')){
+            idC_btn.classList.remove('subjectTab_deAct')
+            imgC_btn.classList.add('subjectTab_deAct')
+            inners=tapInner('subject_idCenter')
+        }
     };
 
     function changeTImgC(){
-        idC_btn.classList.add('subjectTab_deAct')
-        imgC_btn.classList.remove('subjectTab_deAct')
-        axios.get('https://kyuj59.github.io/hospital00/data/subject_imgCenter.html').then((res)=>{
-            panel.innerHTML=res.data;
-        })
+        if(imgC_btn.classList.contains('subjectTab_deAct')){
+            idC_btn.classList.add('subjectTab_deAct')
+            imgC_btn.classList.remove('subjectTab_deAct')
+            inners=tapInner('subject_imgCenter')
+        }
     }
-    
+
 }
