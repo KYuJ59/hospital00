@@ -8,6 +8,16 @@
         border-color:var(--main);
     }
 }
+@keyframes aBtnHover2 {
+    from{
+        background:#ffffff;
+        color:#000000;
+    }
+    to{
+        background:#000000;
+        color:#ffffff;
+    }
+}
 @keyframes wewe {
     from{
         transform:translateX(0%);

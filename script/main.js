@@ -7,6 +7,9 @@ slider1()
 //진료과목 탭
 subject()
 
+//휴먼티비 슬라이더
+slider2()
+
 
 function slider0(){
     const prevBtn=document.querySelector('#mainVis_prevBtn');
@@ -264,7 +267,7 @@ function subject(){
 
     
     const tapInner=(subject)=>{
-        axios.get(`https://kyuj59.github.io/hospital00/data/${subject}.html`).then((res)=>{
+        axios.get(`https://kyuj59.github.io/hospital00/subject/${subject}.html`).then((res)=>{
             panel.innerHTML=res.data;
         })
     }
@@ -274,7 +277,7 @@ function subject(){
     init()
     initEvent()
     function init(){
-        inners=tapInner('subject_idCenter')
+        inners=tapInner('idCenter')
     };
     function initEvent(){
         idC_btn.addEventListener('click',changeTIdC);
@@ -285,7 +288,7 @@ function subject(){
         if(idC_btn.classList.contains('subjectTab_deAct')){
             idC_btn.classList.remove('subjectTab_deAct')
             imgC_btn.classList.add('subjectTab_deAct')
-            inners=tapInner('subject_idCenter')
+            inners=tapInner('idCenter')
         }
     };
 
@@ -293,8 +296,34 @@ function subject(){
         if(imgC_btn.classList.contains('subjectTab_deAct')){
             idC_btn.classList.add('subjectTab_deAct')
             imgC_btn.classList.remove('subjectTab_deAct')
-            inners=tapInner('subject_imgCenter')
+            inners=tapInner('imgCenter')
         }
     }
 
+}
+
+function slider2(){
+    const list=document.querySelector('#humanTV_tvList')
+    const li=document.querySelectorAll('#humanTV_tvList>li')
+    const dots=document.querySelectorAll('#humanTV_btnBox>button')
+
+    let gap=li[1].offsetLeft-li[0].offsetLeft-li[0].offsetWidth
+    let liWidth=li[0].offsetWidth+gap
+    let actBtn=dots[0]
+
+    let currentIndex=0;
+    let maxIndex=3;
+
+    initEvent()
+    function initEvent(){
+        dots.forEach((item,index)=>{
+            item.addEventListener('click',()=>{
+                slide(index)
+            })
+        })
+    }
+
+    function slide(i){
+        gsap.to(list,{left:-liWidth*i})
+    }
 }
