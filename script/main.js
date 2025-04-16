@@ -264,7 +264,7 @@ function subject(){
 
     init()
     function init(){
-        axios.get('/data/subject_idCenter.html').then((res)=>{
+        axios.get('https://kyuj59.github.io/hospital00/data/subject_idCenter.html').then((res)=>{
             panel.innerHTML=res.data;
         })
     }
