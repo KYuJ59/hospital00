@@ -263,8 +263,29 @@ function subject(){
     const imgC_btn=document.querySelector('#imgCenter_tabBtn');
 
     init()
+    initEvent()
     function init(){
         axios.get('https://kyuj59.github.io/hospital00/data/subject_idCenter.html').then((res)=>{
+            panel.innerHTML=res.data;
+        })
+    };
+    function initEvent(){
+        idC_btn.addEventListener('click',changeTIdC);
+        imgC_btn.addEventListener('click',changeTImgC);
+    };
+
+    function changeTIdC(){
+        idC_btn.classList.remove('subjectTab_deAct')
+        imgC_btn.classList.add('subjectTab_deAct')
+        axios.get('https://kyuj59.github.io/hospital00/data/subject_idCenter.html').then((res)=>{
+            panel.innerHTML=res.data;
+        });
+    };
+
+    function changeTImgC(){
+        idC_btn.classList.add('subjectTab_deAct')
+        imgC_btn.classList.remove('subjectTab_deAct')
+        axios.get('https://kyuj59.github.io/hospital00/data/subject_imgCenter.html').then((res)=>{
             panel.innerHTML=res.data;
         })
     }
