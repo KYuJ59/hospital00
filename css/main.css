@@ -492,7 +492,6 @@
     display:block;
     opacity:0;
     content:"바로가기 \f061";
-    font-weight:900;
     width:100px;
     height:20px;
     position:absolute;
@@ -500,6 +499,7 @@
     bottom:45px;
     font-family:"Font Awesome 6 Free";
     font-size:18px;
+    font-weight:900;
     color:rgba(255,255,255,0.7);
 }
 .subject_cardBox a::after{
@@ -513,8 +513,8 @@
     position:absolute;
     right:35px;
     bottom:45px;
-    font-size:30px;
-    line-height:52px;
+    font-size:28px;
+    line-height:48px;
     text-align:center;
     color:#888888;
 }
@@ -615,6 +615,7 @@
 #humanTV_box{
     width:100%;
     padding-top:200px;
+    overflow:hidden;
     background:darkgrey;
 }
 #humanTV{
@@ -659,17 +660,12 @@
 }
 #humanTV_tvList{
     width:162vw;
-    /* height:427px; */
     position:relative;
     left:0;
     top:0;
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    /* grid-column-gap:2vw; */
     grid-column-gap:35px;
-}
-#humanTV_tvList li{
-    /* aspect-ratio:1.2/1; */
 }
 #humanTV_tvList li a{
     display:block;
@@ -681,11 +677,57 @@
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+    user-select:none;
 }
 .tvList_imgBox{
     width:100%;
     aspect-ratio:1.38/1;
+    border-radius:10px;
+    position:relative;
+    left:0;
+    top:0;
+    /* overflow:hidden; */
     background:darkgoldenrod;
+}
+.tvList_imgBox img{
+    object-fit:cover;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+.tvList_imgBox::before{
+    display:none;
+    opacity:0;
+    content:"";
+    width:99%;
+    height:99%;
+    border:solid 5px var(--main);
+    border-radius:20px;
+    background:rgba(0,0,0,0.5);
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+.tvList_imgBox::after{
+    display:none;
+    opacity:0;
+    content:"더보기 \f061";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-family:"Font Awesome 6 Free";
+    font-size:18px;
+    font-weight:900;
+    color:rgba(255,255,255,0.7);
+    text-align:center;
+}
+#humanTV_tvList li:hover .tvList_imgBox::before,
+#humanTV_tvList li:hover .tvList_imgBox::after{
+    display:block;
+    animation:opacity0t1 0.5s forwards;
 }
 .tvList_textBox{
     width:100%;
@@ -995,7 +1037,7 @@
         right:10px;
         bottom:15px;
         line-height:30px;
-        font-size:10px;
+        font-size:14px;
     }
     .subjects{
         border-radius:10px;
