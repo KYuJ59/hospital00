@@ -162,22 +162,23 @@ function slider1(){
         currentX=list.offsetLeft
         endX=e.pageX
         moveX=endX-downX
-        if(Math.abs(moveX)!=5){
+        if(Math.abs(moveX)!=2){
             isDragg=true
+
+            gsap.set(list,{left:-(liWidth*currentIndex)+moveX})
+
+            if(!w768){
+                newIndex=Math.round((-1*currentX)/liWidth)
+                if(newIndex>maxIndex){
+                    newIndex=maxIndex;
+                };
+                if(newIndex<0){
+                    newIndex=0;
+                };
+                btnActivatin(newIndex)
+            }
         }
 
-        gsap.set(list,{left:-(liWidth*currentIndex)+moveX})
-
-        if(!w768){
-            newIndex=Math.round((-1*currentX)/liWidth)
-            if(newIndex>maxIndex){
-                newIndex=maxIndex;
-            };
-            if(newIndex<0){
-                newIndex=0;
-            };
-            btnActivatin(newIndex)
-        }
 
     }
     function cDrag(){
@@ -333,6 +334,8 @@ function slider2(){
     let endX=null;
     let moveX=null;
 
+    let isDragg=false;
+
 
     initEvent()
     function initEvent(){
@@ -351,7 +354,10 @@ function slider2(){
             e.preventDefault();
             downX=e.pageX
             down(e)
-            document.addEventListener('mouseup',cdragg)
+            if(isDragg==true){
+                isDragg=false
+                document.addEventListener('mouseup',cdragg)
+            }
         })
     }
 
@@ -383,22 +389,26 @@ function slider2(){
         document.addEventListener('mousemove',dragg)
     }
     function dragg(e){
-        currentX=list.offsetLeft
         endX=e.pageX
         moveX=endX-downX
-        newIndex=Math.floor(-1*currentX/list.offsetWidth*10)
-        if(newIndex>=maxIndex){
-            newIndex=maxIndex
-        }
-        if(newIndex<0){
-            newIndex=0
+        if(Math.abs(moveX)>=2){
+            isDragg=true
+            newIndex=Math.floor(-1*currentX/list.offsetWidth*10)
+            if(newIndex>=maxIndex){
+                newIndex=maxIndex
+            }
+            if(newIndex<0){
+                newIndex=0
+            }
+    
+            if(newIndex==maxIndex || newIndex==0){
+                gsap.set(list,{left:-liWidth*currentIndex+(moveX/2)})
+            }else{
+                gsap.set(list,{left:-liWidth*currentIndex+moveX})
+            }
         }
 
-        if(newIndex==maxIndex || newIndex==0){
-            gsap.set(list,{left:-liWidth*currentIndex+(moveX/2)})
-        }else{
-            gsap.set(list,{left:-liWidth*currentIndex+moveX})
-        }
+        currentX=list.offsetLeft
 
 
     }
@@ -407,6 +417,11 @@ function slider2(){
         currentIndex=newIndex
         slide(currentIndex)
         btnAct(currentIndex)
+        if(isDragg==ture){
+            aLink.forEach(item=>item.style.pointerEvents='none')
+        }else{
+            aLink.forEach(item=>item.style.pointerEvents='')
+        }
     }
 
     function btnAct(i){

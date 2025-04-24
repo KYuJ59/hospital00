@@ -205,7 +205,7 @@
     min-height:500px;
     box-sizing:border-box;
     padding-top:160px;
-    background:coral;
+    background:darkgray;
 }
 .contentBox{
     width:100%;
@@ -614,9 +614,10 @@
 /*여기서부터 휴먼티비*/
 #humanTV_box{
     width:100%;
-    padding-top:200px;
+    padding-top:120px;
+    margin-top:80px;
     overflow:hidden;
-    background:darkgrey;
+    background:#fbfbfb;
 }
 #humanTV{
     max-width:1600px;
@@ -626,7 +627,6 @@
     width:100%;
     height:180px;
     text-align:center;
-    background:orange;
 }
 #humantTV_contBox{
     width:100%;
@@ -636,7 +636,6 @@
     position:relative;
     left:0;
     top:0;
-    background:olive;
 }
 #humantTV_contBox>a{
     display:block;
@@ -656,7 +655,6 @@
 }
 #humanTV_TVBox{
     width:100%;
-    background:palegreen;
 }
 #humanTV_tvList{
     width:162vw;
@@ -686,29 +684,33 @@
     position:relative;
     left:0;
     top:0;
-    /* overflow:hidden; */
-    background:darkgoldenrod;
+    overflow:hidden;
+    transition:0.5s;
 }
 .tvList_imgBox img{
+    width:110%;
     object-fit:cover;
     position:absolute;
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
+    transition:0.5s;
 }
 .tvList_imgBox::before{
     display:none;
     opacity:0;
     content:"";
-    width:99%;
-    height:99%;
+    width:100%;
+    height:100%;
+    border-radius:10px;
+    box-sizing:border-box;
     border:solid 5px var(--main);
-    border-radius:20px;
     background:rgba(0,0,0,0.5);
     position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
+    left:0;
+    top:0;
+    /* transform:translate(-50%,-50%); */
+    z-index:1;
 }
 .tvList_imgBox::after{
     display:none;
@@ -718,6 +720,7 @@
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
+    z-index:1;
     font-family:"Font Awesome 6 Free";
     font-size:18px;
     font-weight:900;
@@ -728,6 +731,9 @@
 #humanTV_tvList li:hover .tvList_imgBox::after{
     display:block;
     animation:opacity0t1 0.5s forwards;
+}
+#humanTV_tvList li:hover .tvList_imgBox img{
+    width:115%;
 }
 .tvList_textBox{
     width:100%;
@@ -765,6 +771,106 @@
     display:none;
 }
 /*여기까지 휴먼티비끝*/
+/*여기서부터 찾아오시는길*/
+#map_box{
+    width:100%;
+    overflow:hidden;
+    background:#ffffff;
+}
+#map{
+    max-width:1600px;
+    margin:0 auto;
+}
+#map_infoBox{
+    width:100%;
+    padding:12px 0;
+    position:relative;
+    left:0;
+    top:0;
+    display:flex;
+    align-items:center;
+}
+.mapPanel{
+    width:100%;
+    height:100%;
+}
+.wrap_controllers {
+    display:none;
+}
+.mapPanel .cont{
+    display:none;
+}
+#map_textBox{
+    width:500px;
+}
+#map_textBox>div{
+    width:100%;
+    padding:30px 0;
+    border-top:solid 1px #888888;
+    font:normal 20px 'pretendard';
+    color:var(--text);
+    word-break:keep-all;
+}
+#map_textBox>div:first-child{
+    border-top:none;
+}
+#map_textNum{
+    display:flex;
+    align-items:center;
+}
+#map_textNum span:nth-child(2){
+    margin-left:100px;
+    font-size:40px;
+    font-weight:600;
+    color:var(--main);
+}
+#map_textTimes p{
+    margin: 15px 0;
+}
+#map_textTimes p>span:nth-child(1){
+    display:flex;
+    width:80px;
+    float:left;
+    justify-content:space-between;
+}
+#map_textTimes p>span:nth-child(2){
+    margin-left:20px;
+    color:#666666;
+}
+#map_textTimes p:nth-child(3){
+    color:#999999;
+}
+#map_textAdd p:nth-child(1){
+    font-size:30px;
+}
+#map_textAdd p:nth-child(2){
+    margin-top:15px;
+    color:#666666;
+}
+#map_textSNS a{
+    display:inline-block;
+    width:42px;
+    margin-right:10px;
+}
+#map_textSNS a:last-child{
+    margin-right:0;
+}
+#map_textSNS a img{
+    width:100%;
+}
+#map_mapBox{
+    width:75%;
+    aspect-ratio:2.1/1;
+    border:solid 1px var(--main);
+    border-radius: 0 0 0 40px;
+    position:absolute;
+    /* left:550px; */
+    left:35%;
+    top:0;
+    overflow:hidden;
+    background:palegreen;
+}
+/*여기까지 찾아오시는길끝*/
 
 
 
@@ -782,6 +888,19 @@
         width:2690px;
     }
     /*여기까지 휴먼티비끝*/
+}
+@media screen and (max-width:1600px){
+    /*여기서부터 찾아오시는길*/
+    #map_textBox{
+        width:33%;
+    }
+    #map_mapBox{
+        /* width:calc(100% - 500px); */
+        /* aspect-ratio:1.8/1; */
+        top:50%;
+        transform:translateY(-50%);
+    }
+    /*여기까지 찾아오시는길끝*/
 }
 @media screen and (max-width:1400px){
     /*여기서부터 메인비주얼*/
@@ -822,6 +941,7 @@
         width:161vw;
     }
     /*여기까지 휴먼티비끝*/
+
 }
 @media screen and (max-width:1200px){
     /*여기서부터 메인비주얼*/
@@ -838,6 +958,18 @@
         top:65%;
     }
     /*여기서까지 메인비주얼끝*/
+    /*여기서부터 찾아오시는길*/
+    #map_textBox{
+        width:400px;
+    }
+    #map_mapBox{
+        left:450px;
+    }
+    #map_textSNS a{
+        width:36px;
+        margin-right:15px;
+    }
+    /*여기까지 찾아오시는길끝*/
 }
 @media screen and (max-width:1024px){
     #contentWrap{
@@ -1076,7 +1208,7 @@
         grid-row:unset;
     }
     /*여기까지 진료과목소개끝*/
-        /*여기서부터 휴먼티비*/
+    /*여기서부터 휴먼티비*/
     #humanTV_tvList{
         display:inline-block;
         white-space:nowrap;
@@ -1091,4 +1223,41 @@
         display:block;
     }
     /*여기까지 휴먼티비끝*/
+    /*여기서부터 찾아오시는길*/
+    #map_infoBox{
+        flex-direction:column;
+    }
+    #map_mapBox{
+        width:100%;
+        aspect-ratio:1/1.1;
+        position:relative;
+        left:0;
+        top:0;
+        transform:translateY(0);
+    }
+    #map_textBox{
+        width:100%;
+    }
+    #map_textBox>div{
+        padding:15px 0;
+        font-size:16px;
+    }
+    #map_textNum span:nth-child(2){
+        margin-left:80px;
+        font-size:24px;
+    }
+    #map_textTimes p{
+        margin: 10px 0;
+    }
+    #map_textTimes p>span:nth-child(1){
+        width:50px;
+    }
+    #map_textAdd p:nth-child(1){
+        font-size:24px;
+    }
+    #map_textAdd p:nth-child(2){
+        margin-top:10px;
+    }
+
+    /*여기까지 찾아오시는길끝*/
 }
