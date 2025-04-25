@@ -205,7 +205,7 @@
     min-height:500px;
     box-sizing:border-box;
     padding-top:160px;
-    background:darkgray;
+    background:#ffffff;
 }
 .contentBox{
     width:100%;
@@ -291,9 +291,6 @@
 }
 #staffIntro_textBox h2{
     margin-bottom:80px;
-}
-.wi768br{
-    display:none;
 }
 .textEmph_size{
     font-size:30px;
@@ -774,6 +771,7 @@
 /*여기서부터 찾아오시는길*/
 #map_box{
     width:100%;
+    padding-bottom:20px;
     overflow:hidden;
     background:#ffffff;
 }
@@ -806,7 +804,7 @@
 #map_textBox>div{
     width:100%;
     padding:30px 0;
-    border-top:solid 1px #888888;
+    border-top:solid 1px #dddddd;
     font:normal 20px 'pretendard';
     color:var(--text);
     word-break:keep-all;
@@ -830,6 +828,7 @@
 #map_textTimes p>span:nth-child(1){
     display:flex;
     width:80px;
+    font-weight:600;
     float:left;
     justify-content:space-between;
 }
@@ -842,6 +841,7 @@
 }
 #map_textAdd p:nth-child(1){
     font-size:30px;
+    font-weight:600;
 }
 #map_textAdd p:nth-child(2){
     margin-top:15px;
@@ -862,9 +862,8 @@
     width:75%;
     aspect-ratio:2.1/1;
     border:solid 1px var(--main);
-    border-radius: 0 0 0 40px;
+    border-radius: 0 0 0 20px;
     position:absolute;
-    /* left:550px; */
     left:35%;
     top:0;
     overflow:hidden;
@@ -895,8 +894,6 @@
         width:33%;
     }
     #map_mapBox{
-        /* width:calc(100% - 500px); */
-        /* aspect-ratio:1.8/1; */
         top:50%;
         transform:translateY(-50%);
     }
@@ -1101,9 +1098,6 @@
         margin:0 auto;
         font-size:14px;
         word-break:keep-all;
-    }
-    .wi768br{
-        display:block;
     }
     .contentTitle{
         font-size:32px;

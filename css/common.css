@@ -45,6 +45,9 @@ button.activate{
     --text:#111111;
     --subment:#666666;
 }
+.wi768br{
+    display:none;
+}
 /*공용설정 끝*/
 /*여기서부터 헤더*/
 #logo{
@@ -258,8 +261,151 @@ header{
 /*여기서부터 푸터*/
 #footerWrap{
     width:100%;
-    height:1000px;
-    background:orangered;
+    margin-top:130px;
+    background:#333333;
+}
+footer{
+    max-width:1600px;
+    height:272px;
+    padding:50px 20px;
+    margin:0 auto;
+    font-size:16px;
+}
+#foot_logoBox{
+    width:236px;
+    height:100%;
+    float:left;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#foot_logo{
+    width:236px;
+    height:57px;
+    background:var(--main);
+}
+#footer{
+    width:800px;
+    height:100%;
+    margin-left:360px;
+    background:#333333;
+}
+#footTop_conf{
+    width:100%;
+    padding-bottom:20px;
+}
+#footTop_conf button{
+    padding:0;
+    border:none;
+    background:transparent;
+    margin-right:30px;
+    position:relative;
+    left:0;
+    top:0;
+    font:normal 1.125em 'pretendard';
+    color:var(--main);
+}
+#footTop_conf button:last-child{
+    margin-right:0;
+}
+#footTop_conf button::before{
+    display:block;
+    content:"";
+    width:1px;
+    height:13px;
+    background:var(--main);
+    position:absolute;
+    right:-18px;
+    top:50%;
+    transform:translateY(-50%);
+}
+#footTop_conf button:last-child::before{
+    display:none;
+}
+#footTop_guide{
+    width:100%;
+    padding-bottom:20px;
+}
+#footTop_guide a{
+    display:inline-block;
+    margin-right:30px;
+    position:relative;
+    left:0;
+    top:0;
+    font:normal 1.25em 'pretendard';
+    word-break:keep-all;
+    color:#888888;
+}
+#footTop_guide a::before{
+    display:block;
+    content:"";
+    width:1px;
+    height:13px;
+    background:#888888;
+    position:absolute;
+    right:-18px;
+    top:50%;
+    transform:translateY(-50%);
+}
+#footTop_guide a:last-child::before{
+    display:none;
+}
+#footTop_guide a:last-child{
+    margin-right:0;
+}
+address{
+    width:100%;
+    padding-bottom:30px;
+    font:200 1.125em 'pretendard';
+    line-height:1.5;
+    color:#666666;
+}
+address p{
+    margin-bottom:5px;
+}
+address p:last-child{
+    margin-bottom:0;
+}
+.address{
+    color:#999999;
+}
+#adress_num{
+    display:inline-block;
+    font-size:1.25em;
+    font-weight:600;
+    color:var(--main);
+}
+address p:nth-child(3){
+    font-size:1em;
+}
+address p:nth-child(3) span:nth-child(2n){
+    margin-right:30px;
+    position:relative;
+    left:0;
+    top:0;
+    color:#999999;
+}
+address p:nth-child(3) span:last-child{
+    margin-right:0;
+}
+address p:nth-child(3) span:nth-child(2n)::before{
+    display:block;
+    content:"";
+    width:1px;
+    height:13px;
+    background:#eeeeee;
+    position:absolute;
+    right:-18px;
+    top:50%;
+    transform:translateY(-50%);
+}
+address p:nth-child(3) span:last-child::before{
+    display:none;
+}
+#copyr{
+    width:100%;
+    font:normal 1em 'pretendard';
+    color:#666666;
 }
 /*여기까지 푸터끝*/
 
@@ -280,6 +426,27 @@ header{
         left:20px;
     }
     /*헤더끝*/
+    /*푸터*/
+    footer{
+        height:390px;
+    }
+    #foot_logoBox{
+        width:100%;
+        height:57px;
+        float:unset;
+        justify-content:start;
+        margin-bottom:40px;
+    }
+    #foot_logo{
+        width:221px;
+        height:100%;
+    }
+    #footer{
+        width:100%;
+        height:272px;
+        margin-left:0;
+    }
+    /*푸터끝*/
 }
 @media screen and (max-width:1024px){
     /*헤더*/
@@ -299,4 +466,51 @@ header{
         display:block;
     }
     /*헤더끝*/
+}
+@media screen and (max-width:768px){
+    /*공용*/
+    .wi768br{
+        display:block;
+    }
+    /*공용끝*/
+    /*푸터*/
+    footer{
+        height:440px;
+        font-size:14px;
+    }
+    #foot_logoBox{
+        height:36px;
+        margin-bottom:50px;
+    }
+    #foot_logo{
+        width:145px;
+    }
+    #footer{
+        height:352px;
+    }
+    #footTop_conf button,
+    #footTop_guide a{
+        margin-right:20px;
+    }
+    #footTop_conf button::before,
+    #footTop_guide a::before{
+        height:10px;
+        right:-12px;
+    }
+    address p{
+        margin-bottom:15px;
+    }
+    address p:nth-child(3) span{
+        display:block;
+    }
+    address p:nth-child(3) span:nth-child(2n)::before{
+        display:none;
+    }
+    address p:nth-child(3) span:nth-child(1),
+    address p:nth-child(3) span:nth-child(3),
+    address p:nth-child(3) span:nth-child(5){
+        float:left;
+        margin-right:15px;
+    }
+    /*푸터끝*/
 }
