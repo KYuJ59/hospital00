@@ -464,7 +464,7 @@
     margin-top:80px;
 }
 .subject_cardBox{
-    background-size:auto 110%;
+    background-size:auto 115%;
     background-repeat:no-repeat;
     background-position:center;
     transition:1s;
@@ -473,7 +473,7 @@
     top:0;
 }
 .subject_cardBox:hover{
-    background-size:auto 115%;
+    background-size:auto 120%;
 }
 .subject_cardBox a{
     display:block;
@@ -772,6 +772,7 @@
 #map_box{
     width:100%;
     padding-bottom:20px;
+    margin-top:100px;
     overflow:hidden;
     background:#ffffff;
 }
@@ -934,6 +935,9 @@
     }
     /*여기까지 의료진소개끝*/
     /*여기서부터 휴먼티비*/
+    #humantTV_contBox{
+        height:500px;
+    }
     #humanTV_tvList{
         width:161vw;
     }
@@ -1036,6 +1040,12 @@
     }
     /*여기까지 진료과목소개끝*/
     /*여기서부터 휴먼티비*/
+    #humanTV_box{
+        padding-top:50px;
+    }
+    #humantTV_contBox{
+        margin-top:0;
+    }
     #humanTV_tvList{
         width:240vw;
         grid-column-gap:24px;
@@ -1050,7 +1060,9 @@
 }
 @media screen and (max-width:768px){
     /*여기서부터 컨텐츠 공용설정*/
-
+    .subment{
+        font-size:17px;
+    }
     /*여기까지 컨텐츠 공용설정끝*/
     /*여기서부터 메인비주얼*/
     .mainVis_card_textBox{
@@ -1203,6 +1215,14 @@
     }
     /*여기까지 진료과목소개끝*/
     /*여기서부터 휴먼티비*/
+    #humantTV_contBox{
+        height:100vw;
+    }
+    #humantTV_contBox>a{
+        right:50%;
+        transform:translateX(50%);
+        font-size:16px;
+    }
     #humanTV_tvList{
         display:inline-block;
         white-space:nowrap;
