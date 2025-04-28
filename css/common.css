@@ -473,6 +473,13 @@ address p:nth-child(3) span:last-child::before{
         display:block;
     }
     /*공용끝*/
+    /*모바일네비*/
+    #mobMenu_box{
+        width:100%;
+        height:100%;
+        padding:0 10px;
+    }
+    /*모바일네비끝*/
     /*푸터*/
     footer{
         height:440px;

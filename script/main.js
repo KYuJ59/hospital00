@@ -146,9 +146,9 @@ function slider1(){
         window.addEventListener('load',rs);
         list.addEventListener('mousedown',(e)=>{
             down(e)
-            if(isDragg==true){
+            // if(isDragg==true){
                 document.addEventListener('mouseup',cDrag)
-            }
+            // }
         })
     }
 
@@ -184,6 +184,7 @@ function slider1(){
     function cDrag(){
         isDragg=false
         list.removeEventListener('mousemove',drag)
+        w768=window.innerWidth<=768
         if(w768){
             console.log(w768)
             endX<downX&&currentIndex++;
@@ -319,6 +320,7 @@ function subject(){
 function slider2(){
     const list=document.querySelector('#humanTV_tvList')
     const li=document.querySelectorAll('#humanTV_tvList>li')
+    const wrap=list.parentElement
     const aLink=document.querySelectorAll('#humanTV_tvList>li>a')
     const dots=document.querySelectorAll('#humanTV_btnBox>button')
 
@@ -331,8 +333,9 @@ function slider2(){
 
     let currentX=list.offsetLeft;
     let downX=null;
-    let endX=null;
+    let upX=null;
     let moveX=null;
+    let endX=-(list.offsetWidth-wrap.offsetWidth)
 
     let isDragg=false;
 
@@ -350,14 +353,15 @@ function slider2(){
         })
 
 
-        list.addEventListener('mousedown',(e)=>{
+        aLink.forEach(item=>{
+            item.addEventListener('click',(e)=>{
+                isDragg && (e.preventDefault())
+            })})
+        list.addEventListener('pointerdown',(e)=>{
             e.preventDefault();
             downX=e.pageX
             down(e)
-            if(isDragg==true){
-                isDragg=false
-                document.addEventListener('mouseup',cdragg)
-            }
+            document.addEventListener('pointerup',cdragg)
         })
     }
 
@@ -386,11 +390,12 @@ function slider2(){
 
     function down(e){
         gsap.killTweensOf(list)
-        document.addEventListener('mousemove',dragg)
+        document.addEventListener('pointermove',dragg)
     }
     function dragg(e){
-        endX=e.pageX
-        moveX=endX-downX
+        upX=e.pageX
+        moveX=upX-downX
+        endX=-(list.offsetWidth-wrap.offsetWidth)
         if(Math.abs(moveX)>=2){
             isDragg=true
             newIndex=Math.floor(-1*currentX/list.offsetWidth*10)
@@ -401,7 +406,7 @@ function slider2(){
                 newIndex=0
             }
     
-            if(newIndex==maxIndex || newIndex==0){
+            if(list.offsetLeft>0 || list.offsetLeft<endX){
                 gsap.set(list,{left:-liWidth*currentIndex+(moveX/2)})
             }else{
                 gsap.set(list,{left:-liWidth*currentIndex+moveX})
@@ -410,18 +415,20 @@ function slider2(){
 
         currentX=list.offsetLeft
 
-
     }
     function cdragg(){
-        document.removeEventListener('mousemove',dragg)
+        document.removeEventListener('pointermove',dragg)
         currentIndex=newIndex
         slide(currentIndex)
         btnAct(currentIndex)
-        if(isDragg==ture){
-            aLink.forEach(item=>item.style.pointerEvents='none')
-        }else{
-            aLink.forEach(item=>item.style.pointerEvents='')
-        }
+        // if(isDragg==true){
+        //     aLink.forEach(item=>item.addEventListener('click',(e)=>e.preventDefault()))
+        // }
+
+        // isDragg && aLink.forEach(item=>
+        //     item.addEventListener('click',(e)=>
+        //         e.preventDefault()
+        // ))
     }
 
     function btnAct(i){
@@ -431,7 +438,8 @@ function slider2(){
     }
 
     function slide(i){
-        gsap.to(list,{left:-liWidth*i})
+        gsap.to(list,{left:-liWidth*i,onComplete:()=>{isDragg=false}})
+        // isDragg && (isDragg=false);
     }
 
 }

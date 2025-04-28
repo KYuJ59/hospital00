@@ -8,13 +8,14 @@
 ### a태그 위로 mousedown->mousemove순으로 이벤트를 잡을때 드래그되지않음
 - e.preventDefault()
 - 링크이동을 어떻게 막지
-- 상태변수를 설정해 드래그로 인식하면 aLink의 pointerEvents를 none으로 설정해봐도 링크이동이 되는거같음
+- 상태변수를 설정해 드래그로 인식하면 aLink의 pointerEvents를 none으로 설정해봐도 링크이동이 되는거같음 => if문에 오타가 있었음
 
 ### mousemove 함수 내에 mouseup이벤트를 삽입했던 건
 - mousemove가 실행되는동안 mouseup이벤트가 계속 재등록됨->메모리 누수
 - mousedown함수 하위로 이동
 - 버튼에게서도 mousedown->up 이벤트가 발생해 currentIndex 갱신이 겹치는거같음
-- mousemove시 moveX가 일정거리 이상 이동시 isDragg상태를 부여하고 isDragg=true일때만 드래그 이벤트가 발생하도록 설정
+- mousemove시 moveX가 일정거리 이상 이동시 isDragg상태를 부여하고 isDragg=true일때 aLink의 기본 이벤트가 발생하지 않도록 설정
+- isDragg의 상태를 어느 시점에 false로 바꿔야 할지...........
 
 ### 이미지나 링크위로 mouse다운시 드래그슬라이드가 안됨......
 - user-select:none이 아닌 다른 속성이 있는지 찾아봐야겠음.......
@@ -26,3 +27,6 @@
 ### 지도api 리사이징에 대해
 - 특정 해상도마다 사이즈 변경을 걸어주는게 좋을지 동적으로 변경되게끔 하는게 좋을지..
 - 직접 api를 받아다 하는게 아니라 단순공유 코드를 가져다 써서 그런건지 내가 부족한건지 커스텀에 한계가 있는 것 같다
+
+### 슬라이드의 양 끝에 도달했을때 이동수치 조절에 관해
+- 좌표가 이상하게 튀는데 로직의 어느 부분에서 오류가 있는걸까
