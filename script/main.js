@@ -144,10 +144,10 @@ function slider1(){
         prevBtn.addEventListener('click',prev);
         window.addEventListener('resize',rs);
         window.addEventListener('load',rs);
-        list.addEventListener('mousedown',(e)=>{
+        list.addEventListener('pointerdown',(e)=>{
             down(e)
             // if(isDragg==true){
-                document.addEventListener('mouseup',cDrag)
+                document.addEventListener('pointerup',cDrag)
             // }
         })
     }
@@ -155,7 +155,7 @@ function slider1(){
     function down(e){
         gsap.killTweensOf(list)
         downX=e.pageX
-        list.addEventListener('mousemove',drag)
+        list.addEventListener('pointermove',drag)
     }
 
     function drag(e){
@@ -183,7 +183,7 @@ function slider1(){
     }
     function cDrag(){
         isDragg=false
-        list.removeEventListener('mousemove',drag)
+        list.removeEventListener('pointermove',drag)
         w768=window.innerWidth<=768
         if(w768){
             console.log(w768)
@@ -200,7 +200,6 @@ function slider1(){
             currentIndex=newIndex
         }
         slide(currentIndex)
-        console.log(currentIndex)
     }
 
     function next(){
