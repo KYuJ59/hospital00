@@ -3,24 +3,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 	const wrap=document.querySelector('#map_mapBox')
 	const panel=document.querySelector('.mapPanel')
 
-	// let mWidth=wrap.offsetWidth
-	// let mHeight=wrap.offsetHeight
-	// map()
-	// function map() {
-	// 	mWidth=panel.offsetWidth
-	// 	mHeight=panel.offsetHeight
-	// 	panel.innerHTML="";
-	// 	new daum.roughmap.Lander({
-	// 		"timestamp" : "1745288346030",
-	// 		"key" : "2nsax",
-	// 		"mapWidth" : mWidth,
-	// 		"mapHeight" : mHeight
-	// 	}).render();
-	// }
-
-	// window.addEventListener('resize',map)
-
-
 	const map=(w,h)=>{
 		panel.innerHTML="";
 		new daum.roughmap.Lander({

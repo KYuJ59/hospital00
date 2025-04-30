@@ -19,6 +19,7 @@ function header(){
         gsap.set(loginBtn,{borderColor:'#5aa933',background:'#5aa933'});
         gsap.to(subBg,{display:'block',opacity:1});
         gsap.to(subMenus,{display:'block',opacity:1});
+        alert('왜?')
     }
 
     header.addEventListener('mouseleave',deActivate);
@@ -38,18 +39,20 @@ function header(){
     }
     //스크롤 헤더픽스
     window.addEventListener('scroll',()=>{
-        if(window.scrollY>=80){
-            gsap.set(header,{borderBottom:'solid 2px #5aa933',background:'#ffffff'});
-            gsap.set(mainA,{color:'#000000'});
-            gsap.set(loginBtn,{borderColor:'#5aa933',background:'#5aa933'});
-            fixed=true;
-        }else{
-            gsap.set(header,{borderBottom:'solid 1px #dddddd',background:'transparent'});
-            gsap.set(mainA,{color:'#ffffff'});
-            gsap.set(loginBtn,{borderColor:'#ffffff',background:'transparent'});
-            fixed=false;
-        }
+        window.scrollY>=80 ? actFix() : deActFix()
     })
+    function actFix(){
+        gsap.set(header,{borderBottom:'solid 2px #5aa933',background:'#ffffff'});
+        gsap.set(mainA,{color:'#000000'});
+        gsap.set(loginBtn,{borderColor:'#5aa933',background:'#5aa933'});
+        fixed=true;
+    }
+    function deActFix(){
+        gsap.set(header,{borderBottom:'solid 1px #dddddd',background:'transparent'});
+        gsap.set(mainA,{color:'#ffffff'});
+        gsap.set(loginBtn,{borderColor:'#ffffff',background:'transparent'});
+        fixed=false;
+    }
 }
 
 //모바일 네비 여닫기
@@ -92,9 +95,7 @@ function accordion(){
     //모바일 네비 닫을때
     const closeBtn=document.querySelector('#moMenu_closeBtn');
     closeBtn.addEventListener('click',()=>{
-        if(selected!=null){
-            reset();
-        };
+        selected!=null && reset()
     });
 
     list.forEach((item)=>{
@@ -118,18 +119,19 @@ function accordion(){
                 gsap.to(s,{height:defaultHeight,duration:0.2});
             };
 
-            if(selected!=null && selected!=item){
-                act==true && gsap.killTweensOf(selected);
-                closeMenu(selected);
-            };
-            if(selected!=item){
-                selected=item;
-                openMenu(selected);
-            }else if(selected==item){
-                act==true && gsap.killTweensOf(selected);
-                closeMenu(item);
-                selected=null;
-            };
+            const selValid=selected!=null && selected!=item
+            if(selValid){
+                act && gsap.killTweensOf(selected)
+                closeMenu(selected)
+            }
+            selected!=item ? (
+                selected=item,
+                openMenu(selected)
+            ):(
+                act && gsap.killTweensOf(selected),
+                closeMenu(item),
+                selected=null
+            )
 
             return selected;
         });

@@ -30,6 +30,12 @@ function slider0(){
     let selectedCi=null;
     let selBg=null;
 
+    let downX=null;
+    let upX=null;
+    let endX=null;
+    let currentX=null;
+    let moveX=null;
+
     auto()
     initEvent();
 
@@ -49,13 +55,8 @@ function slider0(){
             stop()
             prev()
         });
-        // li.forEach((item)=>{
-        //     item.addEventListener('mousedown',()=>{
-        //         stop()
-        //     })
-        // })
+
     }
-    
     function auto(){
         endTime=Date.now()+duration*1000;
         timer=Math.max(0,Math.floor((endTime-Date.now())/1000))
@@ -64,9 +65,7 @@ function slider0(){
 
     function next(){
         currentIndex++;
-        if(currentIndex>maxIndex){
-            currentIndex=0;
-        };
+        currentIndex>maxIndex && (currentIndex=0)
         slide();
     }
     function prev(){
@@ -129,7 +128,7 @@ function slider1(){
 
     let selected=null;
 
-    let isDragg=false;
+    let isDrag=false;
 
 
     let downX=null;
@@ -146,7 +145,7 @@ function slider1(){
         window.addEventListener('load',rs);
         list.addEventListener('pointerdown',(e)=>{
             down(e)
-            // if(isDragg==true){
+            // if(isDrag==true){
                 document.addEventListener('pointerup',cDrag)
             // }
         })
@@ -163,7 +162,7 @@ function slider1(){
         endX=e.pageX
         moveX=endX-downX
         if(Math.abs(moveX)!=2){
-            isDragg=true
+            isDrag=true
 
             gsap.set(list,{left:-(liWidth*currentIndex)+moveX})
 
@@ -182,11 +181,10 @@ function slider1(){
 
     }
     function cDrag(){
-        isDragg=false
+        isDrag=false
         window.removeEventListener('pointermove',drag)
         w768=window.innerWidth<=768
         if(w768){
-            console.log(w768)
             endX<downX&&currentIndex++;
             endX>downX&&currentIndex--;
             if(currentIndex>maxIndex){
@@ -329,6 +327,7 @@ function slider2(){
 
     let currentIndex=0;
     let maxIndex=2;
+    let newIndex=null;
 
     let currentX=list.offsetLeft;
     let downX=null;
@@ -336,7 +335,7 @@ function slider2(){
     let moveX=null;
     let endX=-(list.offsetWidth-wrap.offsetWidth)
 
-    let isDragg=false;
+    let isDrag=false;
 
 
     initEvent()
@@ -354,14 +353,20 @@ function slider2(){
 
         aLink.forEach(item=>{
             item.addEventListener('click',(e)=>{
-                isDragg && (e.preventDefault())
+                isDrag && (e.preventDefault())
             })})
         list.addEventListener('pointerdown',(e)=>{
             e.preventDefault();
             downX=e.pageX
             down(e)
-            document.addEventListener('pointerup',cdragg)
         })
+        list.addEventListener('touchstart',(e)=>{
+            e.preventDefault();
+            downX=e.touches[0].pageX
+            down(e)
+        })
+        list.addEventListener('touchend',cdrag)
+        document.addEventListener('pointerup',cdrag)
     }
 
     function rs(){
@@ -389,21 +394,20 @@ function slider2(){
 
     function down(e){
         gsap.killTweensOf(list)
-        document.addEventListener('pointermove',dragg)
+        document.addEventListener('pointermove',drag)
     }
-    function dragg(e){
-        upX=e.pageX
+    function drag(e){
+        upX=e.pageX || e.touches[0].pageX
         moveX=upX-downX
         endX=-(list.offsetWidth-wrap.offsetWidth)
+
+        currentX=list.offsetLeft
+
         if(Math.abs(moveX)>=2){
-            isDragg=true
-            newIndex=Math.floor(-1*currentX/list.offsetWidth*10)
-            if(newIndex>=maxIndex){
-                newIndex=maxIndex
-            }
-            if(newIndex<0){
-                newIndex=0
-            }
+            isDrag=true
+            newIndex=Math.round(-currentX/liWidth)
+            if(newIndex>=maxIndex) newIndex=maxIndex
+            if(newIndex<0) newIndex=0
     
             if(list.offsetLeft>0 || list.offsetLeft<endX){
                 gsap.set(list,{left:-liWidth*currentIndex+(moveX/2)})
@@ -412,22 +416,13 @@ function slider2(){
             }
         }
 
-        currentX=list.offsetLeft
 
     }
-    function cdragg(){
-        document.removeEventListener('pointermove',dragg)
+    function cdrag(){
+        document.removeEventListener('pointermove',drag)
         currentIndex=newIndex
         slide(currentIndex)
         btnAct(currentIndex)
-        // if(isDragg==true){
-        //     aLink.forEach(item=>item.addEventListener('click',(e)=>e.preventDefault()))
-        // }
-
-        // isDragg && aLink.forEach(item=>
-        //     item.addEventListener('click',(e)=>
-        //         e.preventDefault()
-        // ))
     }
 
     function btnAct(i){
@@ -437,8 +432,7 @@ function slider2(){
     }
 
     function slide(i){
-        gsap.to(list,{left:-liWidth*i,onComplete:()=>{isDragg=false}})
-        // isDragg && (isDragg=false);
+        gsap.to(list,{left:-liWidth*i,onComplete:()=>{isDrag=false}})
     }
 
 }

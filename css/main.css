@@ -622,8 +622,9 @@
 }
 #humanTV_textBox{
     width:100%;
-    height:180px;
+    min-height:180px;
     text-align:center;
+    word-break:keep-all;
 }
 #humantTV_contBox{
     width:100%;
@@ -1046,6 +1047,10 @@
     #humantTV_contBox{
         margin-top:0;
     }
+    #humantTV_contBox>a{
+        right:50%;
+        transform:translateX(50%);
+    }
     #humanTV_tvList{
         width:240vw;
         grid-column-gap:24px;
@@ -1219,9 +1224,11 @@
         height:100vw;
     }
     #humantTV_contBox>a{
-        right:50%;
-        transform:translateX(50%);
+        width:180px;
+        height:44px;
+        box-sizing:border-box;
         font-size:16px;
+        text-align:center;
     }
     #humanTV_tvList{
         display:inline-block;

@@ -261,15 +261,18 @@ header{
 /*여기서부터 푸터*/
 #footerWrap{
     width:100%;
+    min-height:272px;
     margin-top:130px;
     background:#333333;
 }
 footer{
+    display:inline-block;
     max-width:1600px;
-    height:272px;
+    /* height:272px; */
     padding:50px 20px;
     margin:0 auto;
     font-size:16px;
+    word-break:keep-all;
 }
 #foot_logoBox{
     width:236px;
@@ -333,7 +336,6 @@ footer{
     left:0;
     top:0;
     font:normal 1.25em 'pretendard';
-    word-break:keep-all;
     color:#888888;
 }
 #footTop_guide a::before{
@@ -427,9 +429,6 @@ address p:nth-child(3) span:last-child::before{
     }
     /*헤더끝*/
     /*푸터*/
-    footer{
-        height:390px;
-    }
     #foot_logoBox{
         width:100%;
         height:57px;
@@ -443,7 +442,6 @@ address p:nth-child(3) span:last-child::before{
     }
     #footer{
         width:100%;
-        height:272px;
         margin-left:0;
     }
     /*푸터끝*/
@@ -482,7 +480,6 @@ address p:nth-child(3) span:last-child::before{
     /*모바일네비끝*/
     /*푸터*/
     footer{
-        height:440px;
         font-size:14px;
     }
     #foot_logoBox{
@@ -491,9 +488,6 @@ address p:nth-child(3) span:last-child::before{
     }
     #foot_logo{
         width:145px;
-    }
-    #footer{
-        height:352px;
     }
     #footTop_conf button,
     #footTop_guide a{
