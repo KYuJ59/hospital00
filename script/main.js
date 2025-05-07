@@ -116,6 +116,19 @@ function slider1(){
     let w768=window.innerWidth<=768
     let w1024=window.innerWidth<=1024
 
+    const windowCalc=(a,b,c)=>{
+        const inner=window.innerWidth
+        let result=null;
+        if(inner<=768){
+            result=a
+        }else if(inner<=1024){
+            result=b
+        }else{
+            result=c
+        }
+        return result;
+    }
+
     let currentIndex=0;
     let maxIndex=li.length-3;
     let liGap=li[1].offsetLeft-li[0].offsetLeft-li[0].offsetWidth
@@ -130,7 +143,6 @@ function slider1(){
     let selected=null;
 
     let isDrag=false;
-
 
     let downX=null;
     let upX=null;
@@ -164,36 +176,34 @@ function slider1(){
         
     }
 
-    function down(e){
+    function down(){
         gsap.killTweensOf(list)
         window.addEventListener('pointermove',drag)
     }
 
     function drag(e){
         currentX=list.offsetLeft
-        upX=e.pageX
+        upX=e.pageX || e.touches[0].pageX
         moveX=upX-downX
-
 
         if(Math.abs(moveX)>2){
             isDrag=true
-            
-            if(!w768){
-                newIndex=Math.round(-currentX/liWidth)
-                if(newIndex>maxIndex) newIndex=maxIndex;
-                if(newIndex<0) newIndex=0;
-            }
-
-            if(newIndex==0 && moveX>0|| newIndex==maxIndex && moveX<0){
-                gsap.set(list,{left:startX+(moveX*0.5)})
+            newIndex=Math.round(-currentX/liWidth)
+            if(newIndex>maxIndex) newIndex=maxIndex;
+            if(newIndex<0) newIndex=0;
+            if(currentIndex==0 && moveX>0 || currentIndex==maxIndex && moveX<0){
+                const resistance=rstDrag()
+                gsap.set(list,{left:startX+resistance})
             }else{
                 gsap.set(list,{left:startX+moveX})
             }
-
-            btnActivatin(newIndex)
+            btnActivatin()
         }
-
-
+    }
+    function rstDrag(){
+        const over=moveX<0 ? Math.min(0,moveX):Math.max(0,moveX)
+        const resistance=0.5/(Math.abs(over)/300+1)
+        return moveX-over+over*resistance
     }
     function cDrag(){
         if(isDrag){
@@ -209,34 +219,30 @@ function slider1(){
                 if(currentIndex<0){
                     currentIndex=0;
                 };
-                slide(currentIndex);
+                slide();
             }else{
                 currentIndex=newIndex
             }
-            slide(currentIndex)
+            slide()
         }
     }
 
     function next(){
         currentIndex++;
-        if(currentIndex>maxIndex){
-            currentIndex=maxIndex;
-        };
+        if(currentIndex>maxIndex)currentIndex=maxIndex;
         slide(currentIndex);
-        btnActivatin(currentIndex);
+        btnActivatin();
     }
     function prev(){
         currentIndex--;
-        if(currentIndex<0){
-            currentIndex=0;
-        };
+        if(currentIndex<0)currentIndex=0;
         slide(currentIndex);
-        btnActivatin(currentIndex);
+        btnActivatin();
     }
 
-    function slide(i){
+    function slide(){
         gsap.killTweensOf(list)
-        gsap.to(list,{left:-liWidth*i, duration:1.5});
+        gsap.to(list,{left:-liWidth*currentIndex, duration:1.5});
         if(window.innerWidth<=768){
             selected.classList.contains('activ') && selected.classList.remove('activ')
             !li[currentIndex].classList.contains('activ')&&li[currentIndex].classList.add('activ')
@@ -244,7 +250,8 @@ function slider1(){
         selected=li[currentIndex]
     }
 
-    function btnActivatin(i){
+    function btnActivatin(){
+        isDrag ? (i=newIndex):(i=currentIndex)
         if(i==0){
             gsap.set(prevBtn,{backgroundColor:'rgba(0,0,0,0.2)'});
             pBtnAct=false;
@@ -266,22 +273,26 @@ function slider1(){
     function rs(){
         w768=window.innerWidth<=768
         w1024=window.innerWidth<=1024
+        maxIndex=windowCalc(5,4,3)
+        indexRs()
 
         if(w768){
-            maxIndex=li.length-1;
             selected=li[currentIndex]
             !selected.classList.contains('activ') && selected.classList.add('activ')
         }else if(w1024){
-            maxIndex=li.length-1;
             selected=li[currentIndex]
             selected.classList.contains('activ') && selected.classList.remove('activ')
-        }else{
-            maxIndex=li.length-3;
         }
 
         liGap=li[1].offsetLeft-li[0].offsetLeft-li[0].offsetWidth
         liWidth=li[0].offsetWidth+liGap;
         gsap.set(list,{left:-liWidth*currentIndex});
+    }
+    function indexRs(){
+        if(currentIndex>=maxIndex){
+            currentIndex=maxIndex
+        }
+        btnActivatin()
     }
 
 }
@@ -298,8 +309,6 @@ function subject(){
             panel.innerHTML=res.data;
         })
     }
-
-    let inners=null;
 
     init()
     initEvent()
@@ -397,7 +406,7 @@ function slider2(){
             downX=e.touches[0].pageX
             startX=list.offsetLeft
             endX=-(list.offsetWidth-wrap.offsetWidth)
-            down(e)
+            down()
         })
         list.addEventListener('touchend',cdrag)
         document.addEventListener('pointerup',cdrag)
@@ -405,7 +414,7 @@ function slider2(){
 
 
 
-    function down(e){
+    function down(){
         gsap.killTweensOf(list)
         document.addEventListener('pointermove',drag)
     }
@@ -420,23 +429,18 @@ function slider2(){
             newIndex=Math.round(-currentX/liWidth)
             if(newIndex>=maxIndex) newIndex=maxIndex
             if(newIndex<0) newIndex=0
-    
-            if(newIndex==0 && moveX>0|| newIndex==maxIndex && moveX<0){
+            if(currentIndex==0 && moveX>0 || currentIndex==maxIndex && moveX<0){
                 const resistance=rstDrag()
-                console.log(resistance)
-                gsap.set(list,{left:startX+(moveX*0.5)})
+                gsap.set(list,{left:startX+resistance})
             }else{
                 gsap.set(list,{left:startX+moveX})
             }
         }
     }
     function rstDrag(){
-        const cX=list.offsetLeft
-        const offset=startX+moveX
-        const over=moveX<0 ? Math.min(0,cX):Math.max(0,cX-endX)
-        if(over==0)return moveX
-        const resistance=0.5/(Math.abs(over)/100+1)
-        return cX-over+over*resistance
+        const over=moveX<0 ? Math.min(0,moveX):Math.max(0,moveX)
+        const resistance=0.5/(Math.abs(over)/300+1)
+        return moveX-over+over*resistance
     }
     function cdrag(){
         if(isDrag){
