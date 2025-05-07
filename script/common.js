@@ -19,7 +19,6 @@ function header(){
         gsap.set(loginBtn,{borderColor:'#5aa933',background:'#5aa933'});
         gsap.to(subBg,{display:'block',opacity:1});
         gsap.to(subMenus,{display:'block',opacity:1});
-        alert('왜?')
     }
 
     header.addEventListener('mouseleave',deActivate);

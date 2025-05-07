@@ -107,6 +107,7 @@ function slider0(){
 
 
 function slider1(){
+    const wrap=document.querySelector('#staffIntro_staffBox')
     const list=document.querySelector('#staffIntro_staffList');
     const li=document.querySelectorAll('#staffIntro_staffList>li');
     const prevBtn=document.querySelector('#si_prevBtn');
@@ -132,6 +133,9 @@ function slider1(){
 
 
     let downX=null;
+    let upX=null;
+    let endX=null;
+    let startX=null;
 
     init();
     initEvent();
@@ -144,60 +148,73 @@ function slider1(){
         window.addEventListener('resize',rs);
         window.addEventListener('load',rs);
         list.addEventListener('pointerdown',(e)=>{
+            downX=e.pageX
+            startX=list.offsetLeft
+            endX=-(list.offsetWidth-wrap.offsetWidth)
             down(e)
-            // if(isDrag==true){
-                document.addEventListener('pointerup',cDrag)
-            // }
         })
+        list.addEventListener('touchstart',(e)=>{
+            downX=e.touches[0].pageX
+            startX=list.offsetLeft
+            endX=-(list.offsetWidth-wrap.offsetWidth)
+            down(e)
+        })
+        document.addEventListener('pointerup',cDrag)
+        document.addEventListener('touchend',cDrag)
+        
     }
 
     function down(e){
         gsap.killTweensOf(list)
-        downX=e.pageX
         window.addEventListener('pointermove',drag)
     }
 
     function drag(e){
         currentX=list.offsetLeft
-        endX=e.pageX
-        moveX=endX-downX
-        if(Math.abs(moveX)!=2){
+        upX=e.pageX
+        moveX=upX-downX
+
+
+        if(Math.abs(moveX)>2){
             isDrag=true
-
-            gsap.set(list,{left:-(liWidth*currentIndex)+moveX})
-
+            
             if(!w768){
-                newIndex=Math.round((-1*currentX)/liWidth)
-                if(newIndex>maxIndex){
-                    newIndex=maxIndex;
-                };
-                if(newIndex<0){
-                    newIndex=0;
-                };
-                btnActivatin(newIndex)
+                newIndex=Math.round(-currentX/liWidth)
+                if(newIndex>maxIndex) newIndex=maxIndex;
+                if(newIndex<0) newIndex=0;
             }
+
+            if(newIndex==0 && moveX>0|| newIndex==maxIndex && moveX<0){
+                gsap.set(list,{left:startX+(moveX*0.5)})
+            }else{
+                gsap.set(list,{left:startX+moveX})
+            }
+
+            btnActivatin(newIndex)
         }
 
 
     }
     function cDrag(){
-        isDrag=false
-        window.removeEventListener('pointermove',drag)
-        w768=window.innerWidth<=768
-        if(w768){
-            endX<downX&&currentIndex++;
-            endX>downX&&currentIndex--;
-            if(currentIndex>maxIndex){
-                currentIndex=maxIndex;
-            };
-            if(currentIndex<0){
-                currentIndex=0;
-            };
-            slide(currentIndex);
-        }else{
-            currentIndex=newIndex
+        if(isDrag){
+            isDrag=false
+            window.removeEventListener('pointermove',drag)
+            w768=window.innerWidth<=768
+            if(w768){
+                endX<downX&&currentIndex++;
+                endX>downX&&currentIndex--;
+                if(currentIndex>maxIndex){
+                    currentIndex=maxIndex;
+                };
+                if(currentIndex<0){
+                    currentIndex=0;
+                };
+                slide(currentIndex);
+            }else{
+                currentIndex=newIndex
+            }
+            slide(currentIndex)
         }
-        slide(currentIndex)
     }
 
     function next(){
@@ -207,7 +224,6 @@ function slider1(){
         };
         slide(currentIndex);
         btnActivatin(currentIndex);
-        console.log(currentIndex)
     }
     function prev(){
         currentIndex--;
@@ -216,7 +232,6 @@ function slider1(){
         };
         slide(currentIndex);
         btnActivatin(currentIndex);
-        console.log(currentIndex)
     }
 
     function slide(i){
@@ -321,12 +336,22 @@ function slider2(){
     const aLink=document.querySelectorAll('#humanTV_tvList>li>a')
     const dots=document.querySelectorAll('#humanTV_btnBox>button')
 
-    let gap=li[1].offsetLeft-li[0].offsetLeft-li[0].offsetWidth
-    let liWidth=li[0].offsetWidth+gap
     let actBtn=dots[0]
 
+    const windowCalc=(a,b,c)=>{
+        const inner=window.innerWidth
+        let result=null;
+        if(inner<=768){
+            result=a
+        }else if(inner<=1024){
+            result=b
+        }else{
+            result=c
+        }
+        return result;
+    }
+
     let currentIndex=0;
-    let maxIndex=2;
     let newIndex=null;
 
     let currentX=list.offsetLeft;
@@ -334,14 +359,19 @@ function slider2(){
     let upX=null;
     let moveX=null;
     let endX=-(list.offsetWidth-wrap.offsetWidth)
+    let startX=null;
 
     let isDrag=false;
+
+    let gap=null;
+    let liWidth=null;
+    let maxIndex=null;
 
 
     initEvent()
     function initEvent(){
         window.addEventListener('resize',rs)
-        window.addEventListener('load',rs)
+        window.addEventListener('load',rs);
         dots.forEach((item,index)=>{
             item.addEventListener('click',()=>{
                 slide(index)
@@ -358,39 +388,22 @@ function slider2(){
         list.addEventListener('pointerdown',(e)=>{
             e.preventDefault();
             downX=e.pageX
+            startX=list.offsetLeft
+            endX=-(list.offsetWidth-wrap.offsetWidth)
             down(e)
         })
         list.addEventListener('touchstart',(e)=>{
             e.preventDefault();
             downX=e.touches[0].pageX
+            startX=list.offsetLeft
+            endX=-(list.offsetWidth-wrap.offsetWidth)
             down(e)
         })
         list.addEventListener('touchend',cdrag)
         document.addEventListener('pointerup',cdrag)
     }
 
-    function rs(){
-        gap=li[1].offsetLeft-li[0].offsetLeft-li[0].offsetWidth
-        liWidth=li[0].offsetWidth+gap
-        if(window.innerWidth<=768){
-            maxIndex=4
-            indexRs()
-        }else if(window.innerWidth<=1024){
-            maxIndex=3
-            indexRs()
-        }else{
-            maxIndex=2
-            indexRs()
-        }
-        gsap.set(list,{left:-liWidth*currentIndex})
-    }
 
-    function indexRs(){
-        if(currentIndex>=maxIndex){
-            currentIndex=maxIndex
-            btnAct(currentIndex)
-        }
-    }
 
     function down(e){
         gsap.killTweensOf(list)
@@ -399,30 +412,39 @@ function slider2(){
     function drag(e){
         upX=e.pageX || e.touches[0].pageX
         moveX=upX-downX
-        endX=-(list.offsetWidth-wrap.offsetWidth)
 
         currentX=list.offsetLeft
 
-        if(Math.abs(moveX)>=2){
+        if(Math.abs(moveX)>2){
             isDrag=true
             newIndex=Math.round(-currentX/liWidth)
             if(newIndex>=maxIndex) newIndex=maxIndex
             if(newIndex<0) newIndex=0
     
-            if(list.offsetLeft>0 || list.offsetLeft<endX){
-                gsap.set(list,{left:-liWidth*currentIndex+(moveX/2)})
+            if(newIndex==0 && moveX>0|| newIndex==maxIndex && moveX<0){
+                const resistance=rstDrag()
+                console.log(resistance)
+                gsap.set(list,{left:startX+(moveX*0.5)})
             }else{
-                gsap.set(list,{left:-liWidth*currentIndex+moveX})
+                gsap.set(list,{left:startX+moveX})
             }
         }
-
-
+    }
+    function rstDrag(){
+        const cX=list.offsetLeft
+        const offset=startX+moveX
+        const over=moveX<0 ? Math.min(0,cX):Math.max(0,cX-endX)
+        if(over==0)return moveX
+        const resistance=0.5/(Math.abs(over)/100+1)
+        return cX-over+over*resistance
     }
     function cdrag(){
-        document.removeEventListener('pointermove',drag)
-        currentIndex=newIndex
-        slide(currentIndex)
-        btnAct(currentIndex)
+        if(isDrag){
+            document.removeEventListener('pointermove',drag)
+            currentIndex=newIndex
+            slide(currentIndex)
+            btnAct(currentIndex)
+        }
     }
 
     function btnAct(i){
@@ -434,5 +456,23 @@ function slider2(){
     function slide(i){
         gsap.to(list,{left:-liWidth*i,onComplete:()=>{isDrag=false}})
     }
+
+    function rs(){
+        gap=li[1].offsetLeft-li[0].offsetLeft-li[0].offsetWidth
+        liWidth=li[0].offsetWidth+gap
+        maxIndex=windowCalc(4,3,2)
+        indexRs()
+
+        gsap.set(list,{left:-liWidth*currentIndex})
+
+    }
+    
+    function indexRs(maxIndex){
+        if(currentIndex>=maxIndex){
+            currentIndex=maxIndex
+            btnAct(currentIndex)
+        }
+    }
+
 
 }
