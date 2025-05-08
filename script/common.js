@@ -1,4 +1,5 @@
 
+
 header()
 function header(){
     const header=document.querySelector('#headerWrap');
@@ -21,7 +22,7 @@ function header(){
         gsap.to(subMenus,{display:'block',opacity:1});
     }
 
-    header.addEventListener('mouseleave',deActivate);
+    header.addEventListener('mouseleave',deActivate)
 
     function deActivate(){
         if(fixed==false){
@@ -29,17 +30,21 @@ function header(){
             gsap.set(mainA,{color:'#ffffff'});
             gsap.set(loginBtn,{borderColor:'#ffffff',background:'transparent'});
         }
-        gsap.to(subBg,{opacity:0,onComplate:()=>{
-            gsap.set(subBg,{display:'none'});
-        }});
-        gsap.to(subMenus,{opacity:0,onComplate:()=>{
-            gsap.set(subMenus,{display:'none'});
-        }});
+        gsap.to(subBg,{opacity:0,display:'none'});
+        gsap.to(subMenus,{opacity:0,display:'none'});
     }
     //스크롤 헤더픽스
-    window.addEventListener('scroll',()=>{
-        window.scrollY>=80 ? actFix() : deActFix()
+    const urlInfo=location.href;
+    const startIndex=urlInfo.lastIndexOf('/')
+    const fileName=urlInfo.substr(startIndex+1)
+    window.addEventListener('load',()=>{
+        (fileName==='login.html') ? actFix():fix()
     })
+    function fix(){
+        window.addEventListener('scroll',()=>{
+            window.scrollY>=80 ? actFix() : deActFix()
+        })
+    }
     function actFix(){
         gsap.set(header,{borderBottom:'solid 2px #5aa933',background:'#ffffff'});
         gsap.set(mainA,{color:'#000000'});
@@ -52,6 +57,7 @@ function header(){
         gsap.set(loginBtn,{borderColor:'#ffffff',background:'transparent'});
         fixed=false;
     }
+
 }
 
 //모바일 네비 여닫기
@@ -138,3 +144,40 @@ function accordion(){
     });
 
 }
+
+showing()
+
+function showing(){
+    function upDown(target,del){
+        target.forEach((item)=>{
+            const trigger=item.closest('.triggerBox');
+            gsap.to(item,{y:0,opacity:1,duration:del,
+                scrollTrigger:{
+                    trigger:trigger,
+                    start:'top 70%',
+                    toggleActions:'play none none none',
+                    markers:false
+                },
+                onComplete:()=>{
+                    if(item.classList.contains('aftUn'))item.classList.add('titleUnder')
+                }
+            })
+        })
+    }
+    const upper=document.querySelectorAll('.upTrigger')
+    upDown(upper,1.2)
+    const dUpper=document.querySelectorAll('.upTrigger_d')
+    upDown(dUpper,1.6)
+    const downer=document.querySelectorAll('.downTrigger')
+    upDown(downer,1.2)
+    const dDowner=document.querySelectorAll('.downTrigger_d')
+    upDown(dDowner,1.6)
+}
+// login()
+// function login(){
+//     const loginBtn=document.querySelector('#login')
+
+//     loginBtn.addEventListener('click',()=>{
+//         location.href='https://kyuj59.github.io/hospital00/members/login.html'
+//     })
+// }

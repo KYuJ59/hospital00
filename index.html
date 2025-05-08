@@ -7,9 +7,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.css.min.js"></script>
     <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css'/>
-    <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/animation.css">
@@ -78,10 +78,10 @@
                     </li>
                 </ul>
             </nav>
-            <button id="login" class="activate">
+            <a id="login" class="activate" href="#">
                 <i class="fa-regular fa-circle-user"></i>
                 <span>로그인</span>
-            </button>
+            </a>
             <button id="mobMenuBtn">
                 <i class="fa-solid fa-align-right"></i>
             </button>
@@ -192,7 +192,7 @@
         </section>
         <section id="inquiryBox">
             <h2 class="hidden">상담 문의</h2>
-            <article id="inquiry_counseling" class="inquiry">
+            <article id="inquiry_counseling" class="inquiry downTrigger">
                 <h3 class="inquiry_title">진료 상담</h3>
                 <div class="inquiry_linkBox">
                     <a title="전화걸기" href="#" class="inquiry_link">
@@ -208,12 +208,12 @@
                     <p class="inquiry_text">분야별 최고 수준의 전문의와<br>상담을 통해 고민을 해결해보세요.</p>
                 </div>
             </article>
-            <article id="inquiry_reservation" class="inquiry">
+            <article id="inquiry_reservation" class="inquiry upTrigger">
                 <h3 class="inquiry_title">진료 예약</h3>
                 <div class="inquiry_linkBox">
                     <a title="진료예약" href="#" class="inquiry_link">
-                        <img src="./images/icon-call.png" alt="진료예약">
-                        <p class="inquiry_subTitle">전화걸기</p>
+                        <img src="./images/icon-calendar.png" alt="진료예약">
+                        <p class="inquiry_subTitle">진료예약</p>
                     </a>
                     <a title="오시는길" href="#" class="inquiry_link">
                         <img src="./images/icon-map.png" alt="오시는길">
@@ -236,19 +236,19 @@
     </div>
     <div id="contentWrap">
         <!--의료진 소개-->
-        <div class="contentBox" id="staffIntro_box">
+        <div class="contentBox triggerBox" id="staffIntro_box">
             <section id="staffIntro">
                 <div id="staffIntro_textBox">
-                    <h2 class="contentTitle titleUnder">모든것은 <span class="titleEmph">생명</span> 으로부터</h2>
-                    <p>휴먼영상의학센터는<br>
+                    <h2 class="contentTitle downTrigger aftUn">모든것은 <span class="titleEmph">생명</span> 으로부터</h2>
+                    <p class="upTrigger">휴먼영상의학센터는<br>
                         <br>
                     <span class="textEmph_size textEmph_weight">한 생명의 절실함이 온전히<br class="wi768br">우리에게 온다는 책임감으로</span><br><br class="wi768br">
                     <span class="textEmph_weight">생명</span>을 살리는 <span class="textEmph_weight">영상의학 검사와 첨단 영상시술을 영상의학과 전문의 150여명과 함께</span>하고 있습니다.
                     </p>
                     <br>
-                    <a title="의료진 소개 바로가기" href="#">의료진 소개 바로가기 <i class="fa-solid fa-arrow-right"></i></a>
+                    <a title="의료진 소개 바로가기" href="#" class="upTrigger">의료진 소개 바로가기 <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-                <div id="staffIntro_staffBox">
+                <div id="staffIntro_staffBox" class="upTrigger_d">
                     <ul id="staffIntro_staffList">
                         <li>
                             <img title="김김김 대표원장" src="./images/dr1.jpg" alt="김김김 대표원장">
@@ -307,38 +307,38 @@
         </div>
         <!--여기까지 human we are-->
         <!--진료과목-->
-        <div class="contentBox" id="subject_box">
+        <div class="contentBox triggerBox" id="subject_box">
             <section id="subject">
                 <div id="subject_textBox">
-                    <h2 class="contentTitle">휴먼 <span class="titleEmph">진료과목</span></h2>
-                    <p class="subment">
+                    <h2 class="contentTitle downTrigger">휴먼 <span class="titleEmph">진료과목</span></h2>
+                    <p class="subment upTrigger">
                         휴먼영상의학센터는 고품질의 영상의학검사와<br>
                         비수술적 안전한치료를 지향합니다.
                     </p>
                 </div>
                 <div id="subject_centerBox">
-                    <div id="subject_tabBtnBox">
+                    <div id="subject_tabBtnBox" class="upTrigger">
                         <button id="idCenter_tabBtn">영상진단센터</button>
                         <button class="subjectTab_deAct" id="imgCenter_tabBtn">영상시술센터</button>
                     </div>
-                    <div id="subject_tabBox"></div>
+                    <div id="subject_tabBox" class="upTrigger_d"></div>
                 </div>
             </section>
         </div>
         <!--진료과목끝-->
-        <!--휴먼티비-->
-        <div class="contentBox" id="humanTV_box">
+        <!--휴먼티비--> 
+        <div class="contentBox triggerBox" id="humanTV_box">
             <section id="humanTV">
                 <div id="humanTV_textBox">
-                    <h2 class="contentTitle">휴먼 <span class="titleEmph">TV</span></h2>
-                    <p class="subment">
+                    <h2 class="contentTitle downTrigger">휴먼 <span class="titleEmph">TV</span></h2>
+                    <p class="subment upTrigger">
                         휴먼영상의학센터의 모든 콘텐츠는 <br class="wi768br">저작권법의 보호를 받습니다.<br>
                         콘텐츠의 무단도용 및 수정, 편집을 금합니다.
                     </p>
                 </div>
                 <div id="humantTV_contBox">
-                    <a title="커뮤니티 바로가기" href="#">커뮤니티 바로가기 <i class="fa-solid fa-arrow-right"></i></a>
-                    <div id="humanTV_TVBox">
+                    <a title="커뮤니티 바로가기" class="upTrigger" href="#">커뮤니티 바로가기 <i class="fa-solid fa-arrow-right"></i></a>
+                    <div id="humanTV_TVBox" class="upTrigger_d">
                         <ul id="humanTV_tvList">
                             <li>
                                 <a title="휴튜브 타이틀 [Part.3]" href="#">
@@ -404,14 +404,14 @@
         </div>
         <!--휴먼티비끝-->
         <!--찾아오시는길-->
-        <div class="contentBox" id="map_box">
+        <div class="contentBox triggerBox" id="map_box">
             <section id="map">
-                <h2 class="contentTitle">휴먼 <span class="titleEmph">오시는길</span></h2>
+                <h2 class="contentTitle downTrigger">휴먼 <span class="titleEmph">오시는길</span></h2>
                 <div id="map_infoBox">
                     <div id="map_mapBox">
                         <div id="daumRoughmapContainer1745288346030" class="root_daum_roughmap root_daum_roughmap_landing mapPanel"></div>
                     </div>
-                    <div id="map_textBox">
+                    <div id="map_textBox" class="upTrigger_d">
                         <div id="map_textNum">
                             <span>대표번호</span><span>5954-5452</span>
                         </div>
@@ -504,7 +504,7 @@
             </div>
         </footer>
     </div>
-    <!--푸터시작끝-->
+    <!--푸터끝-->
     <script src="./script/common.js"></script>
     <script src="./script/main.js"></script>
     <script src="./script/map.js"></script>

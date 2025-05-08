@@ -11,11 +11,18 @@
 @keyframes aBtnHover2 {
     from{
         background:#ffffff;
-        color:#000000;
+        color:#111111;
     }
     to{
-        background:#000000;
+        background:#111111;
         color:#ffffff;
+    }
+}
+@keyframes btnHover {
+    to{
+        border-color:#666666;
+        background:#ffffff;
+        color:#666666;
     }
 }
 @keyframes wewe {

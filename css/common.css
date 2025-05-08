@@ -48,6 +48,16 @@ button.activate{
 .wi768br{
     display:none;
 }
+.upTrigger,
+.upTrigger_d{
+    opacity:0;
+    transform:translateY(50px);
+}
+.downTrigger,
+.downTrigger_d{
+    opacity:0;
+    transform:translateY(-50px);
+}
 /*공용설정 끝*/
 /*여기서부터 헤더*/
 #logo{
@@ -133,6 +143,7 @@ header{
     color:var(--main);
 }
 #login{
+    display:inline-block;
     width:80px;
     height:32px;
     border-radius:40px;
@@ -142,8 +153,9 @@ header{
     right:20px;
     top:50%;
     transform:translateY(-50%);
-    font:normal 15px 'pretendard';
+    font:normal 15px/32px 'pretendard';
     font-weight:500;
+    text-align:center;
     color:#ffffff;
 }
     /*여기부터 모바일 네비*/
@@ -253,7 +265,8 @@ header{
     top:6px;
 }
 .mobSubMenu_list li a{
-    font:500 18px/45px 'pretnedard';
+    padding:0 20px;
+    font:400 18px/45px 'pretnedard';
     color:#777777;
 }
     /*여기까지 모바일 네비끝*/

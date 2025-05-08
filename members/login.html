@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.4/axios.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.css.min.js"></script>
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css'/>
+    <link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/animation.css">
+    <title>로그인 | | hospital00</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <ul class="skipmenu">
+        <li><a title="본문내용 바로가기" href="#" class="hidden">본문내용 바로가기</a></li>
+    </ul>
+    <div id="headerWrap">
+        <header>
+            <h1 id="logo"><a title="휴먼영상의학센터" href="https://humic.co.kr/main/main.html">휴먼영상의학센터</a></h1>
+            <div id="navBg"></div>
+            <nav id="mainMenu">
+                <h2 class="hidden">메인메뉴</h2>
+                <ul id="mainMenu_list">
+                    <li><a title="병원소개" href="#">병원소개</a>
+                        <ul class="subMenu_list">
+                            <li><a title="병원소개" href="#">병원소개</a></li>
+                            <li><a title="의료진 소개" href="#">의료진 소개</a></li>
+                            <li><a title="장비소개" href="#">장비소개</a></li>
+                            <li><a title="찾아오시는 길" href="#">찾아오시는 길</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="휴먼영상의학센터" href="#">휴먼영상의학센터</a>
+                        <ul class="subMenu_list">
+                            <li><a title="영상진단 클리닉" href="#">영상진단 클리닉</a></li>
+                            <li><a title="건강검진" href="#">건강검진</a></li>
+                            <li><a title="유방 클리닉" href="#">유방 클리닉</a></li>
+                            <li><a title="갑상선 클리닉" href="#">갑상선 클리닉</a></li>
+                            <li><a title="소아 초음파·영상 클리닉" href="#">소아 초음파·영상 클리닉</a></li>
+                        </ul>                    
+                    </li>
+                    <li><a title="휴먼영상시술센터" href="#">휴먼영상시술센터</a>
+                        <ul class="subMenu_list">
+                            <li><a title="통증 클리닉" href="#">통증 클리닉</a></li>
+                            <li><a title="전립선비대증 클리닉" href="#">전립선비대증 클리닉</a></li>
+                            <li><a title="자궁근종 클리닉" href="#">자궁근종 클리닉</a></li>
+                            <li><a title="하지정맥 클리닉" href="#">하지정맥 클리닉</a></li>
+                            <li><a title="투석혈관 클리닉" href="#">투석혈관 클리닉</a></li>
+                            <li><a title="인터벤션" href="#">인터벤션</a></li>
+                            <li><a title="EECP 클리닉" href="#">EECP 클리닉</a></li>
+                            <li><a title="중심정맥관 클리닉" href="#">중심정맥관 클리닉</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="커뮤니티" href="#">커뮤니티</a>
+                        <ul class="subMenu_list">
+                            <li><a title="병원소식" href="#">병원소식</a></li>
+                            <li><a title="휴먼YOUTUBE" href="#">휴먼YOUTUBE</a></li>
+                            <li><a title="의료지식" href="#">의료지식</a></li>
+                            <li><a title="진단사례 및 치료후기" href="#">진단사례 및 치료후기</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="비급여항목" href="#">비급여항목</a>
+                        <ul class="subMenu_list">
+                            <li><a title="비급여항목" href="#">비급여항목</a></li>
+                        </ul>
+                    </li>
+                    <li><a title="예약 및 상담" href="#">예약 및 상담</a>
+                        <ul class="subMenu_list">
+                            <li><a title="전문의 상담" href="#">전문의 상담</a></li>
+                            <li><a title="진료예약 상담" href="#">진료예약 상담</a></li>
+                            <li><a title="자주 묻는 질문" href="#">자주 묻는 질문</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <button id="login" class="activate">
+                <i class="fa-regular fa-circle-user"></i>
+                <span>로그인</span>
+            </button>
+            <button id="mobMenuBtn">
+                <i class="fa-solid fa-align-right"></i>
+            </button>
+            <div id="mobMenuWrap">
+                <nav id="mobMenu_box">
+                    <h2 class="hidden">모바일 메뉴</h2>
+                    <div id="mobMenu_logo"></div>
+                    <ul id="mobMenu_list">
+                        <li><a href="#">병원소개</a>
+                            <ul class="mobSubMenu_list">
+                                <li class="activate"><a title="병원소개" href="#">병원소개</a></li>
+                                <li><a title="의료진 소개" href="#">의료진 소개</a></li>
+                                <li><a title="장비소개" href="#">장비소개</a></li>
+                                <li><a title="찾아오시는 길" href="#">찾아오시는 길</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">휴먼영상의학센터</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="영상진단 클리닉" href="#">영상진단 클리닉</a></li>
+                                <li><a title="건강검진" href="#">건강검진</a></li>
+                                <li><a title="유방 클리닉" href="#">유방 클리닉</a></li>
+                                <li><a title="갑상선 클리닉" href="#">갑상선 클리닉</a></li>
+                                <li><a title="소아 초음파·영상 클리닉" href="#">소아 초음파·영상 클리닉</a></li>
+                            </ul>                    
+                        </li>
+                        <li><a href="#">휴먼영상시술센터</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="통증 클리닉" href="#">통증 클리닉</a></li>
+                                <li><a title="전립선비대증 클리닉" href="#">전립선비대증 클리닉</a></li>
+                                <li><a title="자궁근종 클리닉" href="#">자궁근종 클리닉</a></li>
+                                <li><a title="하지정맥 클리닉" href="#">하지정맥 클리닉</a></li>
+                                <li><a title="투석혈관 클리닉" href="#">투석혈관 클리닉</a></li>
+                                <li><a title="인터벤션" href="#">인터벤션</a></li>
+                                <li><a title="EECP 클리닉" href="#">EECP 클리닉</a></li>
+                                <li><a title="중심정맥관 클리닉" href="#">중심정맥관 클리닉</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">커뮤니티</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="병원소식" href="#">병원소식</a></li>
+                                <li><a title="휴먼YOUTUBE" href="#">휴먼YOUTUBE</a></li>
+                                <li><a title="의료지식" href="#">의료지식</a></li>
+                                <li><a title="진단사례 및 치료후기" href="#">진단사례 및 치료후기</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">비급여항목</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="비급여항목" href="#">비급여항목</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">예약 및 상담</a>
+                            <ul class="mobSubMenu_list">
+                                <li><a title="전문의 상담" href="#">전문의 상담</a></li>
+                                <li><a title="진료예약 상담" href="#">진료예약 상담</a></li>
+                                <li><a title="자주 묻는 질문" href="#">자주 묻는 질문</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <button id="moMenu_closeBtn">×</button>
+            </div>
+        </header>
+    </div>
+    <!--헤더끝-->
+
+    <div id="loginWrap" class="triggerBox">
+        <section id="toLogin">
+            <h2 class="upTrigger">로그인</h2>
+            <form action="login">
+                <input type="text" id="user_id" maxlength="20" placeholder="아이디" class="upTrigger_d">
+                <input type="text" id="user_pw" maxlength="20" placeholder="비밀번호" class="upTrigger_d">
+                <div id="ut" class="upTrigger_d">
+                    <div id="lostFind">
+                        <a href="#">아이디 찾기</a>
+                        /
+                        <a href="#">비밀번호 찾기</a>
+                    </div>
+                    <a href="#" style="color:var(--main)">회원가입</a>
+                </div>
+                <button id="login_submit" class="upTrigger">로그인</button>
+                <button id="start_withkakao" class="upTrigger">카카오로 시작하기</button>
+            </form>
+        </section>
+    </div>
+    
+
+    
+    <!--푸터시작-->
+    <div id="footerWrap">
+        <footer>
+            <div id="foot_logoBox">
+                <div id="foot_logo"></div>
+            </div>
+            <div id="footer">
+                <div id="footTop_conf">
+                    <button>의무기록 위임장 사본</button>
+                    <button>의무기록 동의서 사본</button>
+                    <button>대리처방 확인서 사본</button>
+                    <button>처방전 대리수령 신청서 사본</button>
+                </div>
+                <div id="footTop_guide">
+                    <a href="#" title="이용약관">이용약관</a>
+                    <a href="#" title="개인정보보호정책">개인정보보호정책</a>
+                    <a href="#" title="이메일무단수집거부">이메일무단수집거부</a>
+                    <a href="#" title="찾아오시는 길">찾아오시는 길</a>
+                    <a href="#" title="찾아오시는 길">비급여</a>
+                </div>
+                <address>
+                    <p>본관<span class="address"> 가나특별시 다라구 마바사로 123 아자동 차카타워 2층</span> <span id="adress_num">TEL. 5954-5452</span></p>
+                    <p>별관<span class="address"> 가나특별시 다라구 마바사로 456 78 차차빌딩 3층</span></p>
+                    <p>
+                        <span>사업자번호</span>
+                        <span>123-45-67890</span>
+                        <span>대표원장</span>
+                        <span>김유정</span>
+                        <span>개인정보 관리자</span>
+                        <span>김유정(kyuj55959@gmail.com)</span>
+                    </p>
+                </address>
+                <div id="copyr">@2025 KYuJ59</div>
+            </div>
+        </footer>
+    </div>
+    <!--푸터끝-->
+    <script src="/script/common.js"></script>
+</body>
+</html>

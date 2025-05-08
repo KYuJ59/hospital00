@@ -10,7 +10,6 @@ subject()
 //휴먼티비 슬라이더
 slider2()
 
-
 function slider0(){
     const prevBtn=document.querySelector('#mainVis_prevBtn');
     const nextBtn=document.querySelector('#mainVis_nextBtn');
@@ -29,12 +28,6 @@ function slider0(){
     const circle=document.querySelectorAll('circle');
     let selectedCi=null;
     let selBg=null;
-
-    let downX=null;
-    let upX=null;
-    let endX=null;
-    let currentX=null;
-    let moveX=null;
 
     auto()
     initEvent();
@@ -102,7 +95,6 @@ function slider0(){
         gsap.set(circle[currentIndex],{r:2,fill:'#ffffff'})
         gsap.set(bg[currentIndex],{background:'none'})
     }
-
 }
 
 
@@ -294,7 +286,6 @@ function slider1(){
         }
         btnActivatin()
     }
-
 }
 
 
@@ -335,7 +326,6 @@ function subject(){
             inners=tapInner('imgCenter')
         }
     }
-
 }
 
 function slider2(){
@@ -389,7 +379,6 @@ function slider2(){
             })
         })
 
-
         aLink.forEach(item=>{
             item.addEventListener('click',(e)=>{
                 isDrag && (e.preventDefault())
@@ -411,7 +400,6 @@ function slider2(){
         list.addEventListener('touchend',cdrag)
         document.addEventListener('pointerup',cdrag)
     }
-
 
 
     function down(){
@@ -477,6 +465,5 @@ function slider2(){
             btnAct(currentIndex)
         }
     }
-
 
 }
