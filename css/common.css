@@ -278,7 +278,7 @@ header{
     margin-top:130px;
     background:#333333;
 }
-footer{
+#footerWrap footer{
     display:inline-block;
     max-width:1600px;
     /* height:272px; */
@@ -484,6 +484,9 @@ address p:nth-child(3) span:last-child::before{
         display:block;
     }
     /*공용끝*/
+    #login{
+        line-height:26px;
+    }
     /*모바일네비*/
     #mobMenu_box{
         width:100%;
@@ -492,7 +495,7 @@ address p:nth-child(3) span:last-child::before{
     }
     /*모바일네비끝*/
     /*푸터*/
-    footer{
+    #footerWrap footer{
         font-size:14px;
     }
     #foot_logoBox{

@@ -1,0 +1,385 @@
+#membersWrap{
+    width:100%;
+    padding:180px 0 0;
+    background:#ffffff;
+}
+#membersWrap section{
+    width:400px;
+    margin:0 auto;
+}
+h2{
+    font:600 45px/50px 'pretendard';
+    text-align:center;
+}
+form{
+    display:inline-block;
+    width:100%;
+    margin-top:50px;
+    display:flex;
+    flex-direction:column;
+}
+.input_text{
+    width:100%;
+    height:48px;
+    border:solid 2px #dddddd;
+    border-radius:8px;
+    box-sizing:border-box;
+    outline:none;
+    font:400 18px 'pretendard';
+    text-indent:20px;
+}
+.btns{
+    width:100%;
+    height:45px;
+    border-radius:30px;
+    margin-bottom:20px;
+    font:500 18px 'pretendard';
+}
+.btns:hover{
+    animation:btnHover 0.3s forwards;
+}
+.greenBtn{
+    border:solid 1px var(--main);
+    background:var(--main);
+    color:#ffffff;
+}
+
+/*로그인*/
+#toLogin{
+    height:400px;
+}
+#toLogin form input{
+    margin-bottom:20px;
+}
+#ut{
+    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    font:400 18px 'pretendard';
+}
+#start_withkakao{
+    border:solid 1px #fde000;
+    background:#fde000;
+}
+/*로그인끝*/
+/*회원가입*/
+.boxs{
+    margin-bottom:20px;
+}
+.boxs label span{
+    position:relative;
+    left:0;
+    top:0;
+    font:400 20px 'pretendard';
+}
+.boxs label span::before{
+    display:block;
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--main);
+    position:absolute;
+    right:-10px;
+    top:0;
+}
+.boxs input{
+    margin-top:5px;
+}
+#contract{
+    margin-bottom:20px;
+    font:400 18px 'pretendard';
+}
+#contract_list li{
+    margin:10px 0;
+}
+#contract_list li a{
+    border-bottom:solid 1px var(--main);
+    color:var(--main);
+}
+/*회원가입끝*/
+/*아이디비밀번호찾기*/
+#toFind form input{
+    margin-bottom:20px;
+}
+#find_tapBtnBox{
+    width:100%;
+    height:47px;
+    margin-top:60px;
+    display:flex;
+    justify-content:space-between;
+}
+#find_tapBtnBox a{
+    width:195px;
+    height:100%;
+    border-radius:40px;
+    font:400 18px/45px 'pretendard';
+    text-align:center;
+}
+#find_tapBtnBox a.act{
+    border:solid 1px var(--main);
+    background:var(--main);
+    color:#ffffff;
+}
+#find_tapBtnBox a.act:hover{
+    animation:btnHover 0.3s forwards;
+}
+#find_tapBtnBox a.deAct{
+    border:solid 1px #666666;
+    background:#ffffff;
+    color:#666666;
+}
+#find_tapBtnBox a.deAct:hover{
+    animation:btnHoverToGr 0.3s forwards;
+}
+/*아이디비밀번호찾기끝*/
+/*카카오가입*/
+#joinKakao_wrap{
+    width:580px;
+    min-height:610px;
+    height:100%;
+    padding-top:30px;
+    box-sizing:border-box;
+    margin:0 auto;
+}
+#jK_logo{
+    font:500 30px 'pretendard';
+    text-align:center;
+    cursor:default;
+}
+#joinKakao_inBox{
+    width:100%;
+    min-height:450px;
+    box-sizing:border-box;
+    border:solid 1px #dddddd;
+    padding:50px;
+}
+#joinKakao_inBox form{
+    margin-top:0;
+}
+.jK_tI{
+    width:100%;
+    height:45px;
+    border:none;
+    border-bottom:solid 2px #dddddd;
+    outline:none;
+    margin-bottom:5px;
+    font:400 18px 'pretendard';
+}
+#label_checkbox{
+    width:100%;
+    height:35px;
+    box-sizing:border-box;
+    padding-left:30px;
+    margin:20px 0;
+    position:relative;
+    left:0;
+    top:0;
+    cursor:pointer;
+    font:400 18px/35px 'pretendard';
+}
+#saveInfo{
+    display:none;
+}
+#checkCustom{
+    display:inline-block;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border:solid 1px #666666;
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+}
+#saveCheck{
+    font:400 14px 'pretendard';
+    color:#666666;
+}
+#label_checkbox span.act{
+    border-color:#fde000;
+    background:#fde000;
+}
+#label_checkbox span.act::before{
+    display:block;
+    content:"";
+    width:6px;
+    height:3px;
+    border-left:solid 2px #000000;
+    border-bottom:solid 2px #000000;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-45deg);
+}
+#jK_submitBox{
+    width:100%;
+}
+.jK_submitBtns{
+    width:100%;
+    height:50px;
+    border-radius:10px;
+    border:none;
+    box-sizing:border-box;
+    position:relative;
+    left:0;
+    top:0;
+    font:400 15px 'pretendard';
+    overflow:hidden;
+}
+.jK_submitBtns:hover::before{
+    display:block;
+    content:"";
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.1);
+    position:absolute;
+    left:0;
+    top:0;
+}
+#jK_loginBtn{
+    background: #fde000;
+}
+#jK_QRLogin{
+    background:#dddddd;
+}
+#jK_submitBox p{
+    margin:20px 0;
+    position:relative;
+    left:0;
+    top:0;
+    font:400 12px 'pretendard';
+    color:#828282;
+    text-align:center;
+}
+#jK_submitBox p::before,
+#jK_submitBox p::after{
+    display:block;
+    content:"";
+    width:45%;
+    min-width:170px;
+    height:0.5px;
+    background:#dddddd;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+#jK_submitBox p::before{
+    left:0;
+}
+#jK_submitBox p::after{
+    right:0;
+}
+#jK_linkBox{
+    width:100%;
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+    font:400 12px 'pretendard';
+}
+#jK_linkBox_r a{
+    display:inline-block;
+    margin-left:20px;
+    position:relative;
+    left:0;
+    top:0;
+}
+#jK_linkBox_r a:first-child::before{
+    display:block;
+    content:"";
+    width:1px;
+    height:8px;
+    background:#dddddd;
+    position:absolute;
+    right:-13px;
+    top:50%;
+    transform:translateY(-50%);
+
+}
+#jK_footerWrap{
+    width:100%;
+    height:150px;
+    padding:40px 0;
+}
+#jK_footerWrap footer{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+#jK_footList{
+    display:inline-block;
+}
+#jK_footList>li{
+    display:inline-block;
+    padding:0 10px;
+    position:relative;
+    left:0;
+    top:0;
+}
+#jK_footList>li::before{
+    display:block;
+    content:"";
+    width:1px;
+    height:10px;
+    background:#dddddd;
+    position:absolute;
+    left:-3px;
+    top:50%;
+    transform:translateY(-50%);
+}
+#jK_footList>li:first-child:before{
+    display:none;
+}
+#jK_footList>li button{
+    border:none;
+    background:none;
+}
+#jK_footLang{
+    display:none;
+    width:100px;
+    border:solid 1px #dddddd;
+    border-radius:5px;
+    background:#ffffff;
+    box-shadow:1px 1px 1px rgba(0,0,0,0.1);
+    padding:0;
+    position:absolute;
+    left:10px;
+    top:-142px;
+    overflow:hidden;
+}
+#jK_footLang li{
+    width:100%;
+    padding:10px 0;
+    border-top:solid 1px #dddddd;
+}
+#jK_footLang li:first-child{
+    border-top:none;
+}
+#jK_footLang li button{
+    width:100%;
+    height:100%;
+    text-align:start;
+    text-indent:5px;
+    font:400 15px 'pretendard';
+}
+#jK_footLang li button.selLang{
+    font-weight:600;
+}
+#jKLang_downIcon{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    background:url('../../images/icon-down.png')no-repeat center;
+}
+/*카카오가입끝*/
+
+@media screen and (max-width:768px){
+    #joinKakao_wrap{
+        width:100%;
+    }
+    #joinKakao_inBox{
+        padding:10px;
+        border:none;
+    }
+}

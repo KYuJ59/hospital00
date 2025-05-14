@@ -616,7 +616,7 @@
 /*여기서부터 휴먼티비*/
 #humanTV_box{
     width:100%;
-    padding-top:120px;
+    padding:120px 0 50px;
     margin-top:80px;
     overflow:hidden;
     background:#fbfbfb;
@@ -925,11 +925,9 @@
         width:70%;
     }
     #inquiry_counseling{
-        transform:translateY(-50px);
         border-radius:0;
     }
     #inquiry_reservation{
-        transform:translateY(50px);
         border-radius:0;
         margin-top:0;
     }
@@ -1049,7 +1047,7 @@
     /*여기까지 진료과목소개끝*/
     /*여기서부터 휴먼티비*/
     #humanTV_box{
-        padding-top:50px;
+        padding:50px 0 100px;
     }
     #humantTV_contBox{
         text-align:center;

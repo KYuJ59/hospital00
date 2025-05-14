@@ -25,7 +25,7 @@ function header(){
     header.addEventListener('mouseleave',deActivate)
 
     function deActivate(){
-        if(fixed==false){
+        if(!fixed){
             gsap.set(header,{borderBottom:'solid 1px #dddddd',background:'transparent'});
             gsap.set(mainA,{color:'#ffffff'});
             gsap.set(loginBtn,{borderColor:'#ffffff',background:'transparent'});
@@ -38,7 +38,7 @@ function header(){
     const startIndex=urlInfo.lastIndexOf('/')
     const fileName=urlInfo.substr(startIndex+1)
     window.addEventListener('load',()=>{
-        (fileName==='login.html') ? actFix():fix()
+        (fileName=== 'login.html'||'signup.html') ? actFix():fix()
     })
     function fix(){
         window.addEventListener('scroll',()=>{

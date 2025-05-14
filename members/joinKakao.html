@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css'/>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/animation.css">
+    <title>카카오 계정</title>
+    <link rel="stylesheet" href="./css/members.css">
+</head>
+<body>
+    <div id="joinKakao_wrap">
+        <p id="jK_logo">kakao</p>
+        <div id="joinKakao_inBox">
+            <form action="joinKakao">
+                <input class="jK_tI" type="text" placeholder="카카오메일 아이디, 이메일, 전화번호">
+                <input class="jK_tI" type="password" placeholder="비밀번호">
+                <label for="saveInfo" id="label_checkbox">
+                    <input type="checkbox" id="saveInfo">
+                    <span id="checkCustom"></span>
+                    <span id="saveCheck">간편로그인 정보 저장 <i class="fa-solid fa-circle-info"></i></span>
+                </label>
+                <div id="jK_submitBox">
+                    <button class="jK_submitBtns" id="jK_loginBtn">로그인</button>
+                    <p>또는</p>
+                    <button title="QR코드 로그인" href="#" class="jK_submitBtns" id="jK_QRLogin">QR코드 로그인</button>
+                </div>
+                <div id="jK_linkBox">
+                    <a title="회원가입" href="https://kyuj59.github.io/hospital00/members/signup.html">회원가입</a>
+                    <div id="jK_linkBox_r">
+                        <a title="계정 찾기" href="https://kyuj59.github.io/hospital00/members/find_id.html">계정 찾기</a>
+                        <a title="비밀번호 찾기" href="https://kyuj59.github.io/hospital00/members/find_pw.html">비밀번호 찾기</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="jK_footerWrap">
+        <footer>
+            <ul id="jK_footList">
+                <li>
+                    <button id="jKLang_btn">한국어 <span id="jKLang_downIcon"></span></button></button>
+                    <ul id="jK_footLang">
+                        <li><button id="jK_langKo" class="selLang">한국어</li>
+                        <li><button id="jK_langEn">English</button></li>
+                        <li><button id="jK_langJp">日本語</button></li>
+                    </ul>
+                </li>
+                <li><button>이용약관</button></li>
+                <li><button>개인정보 처리방침</button></li>
+                <li><button>고객센터</button></li>
+            </ul>
+            <a title="카카오" href="#">© Kakao Corp.</a>
+        </footer>
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+</html>
